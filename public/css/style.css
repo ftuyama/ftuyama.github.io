@@ -82,7 +82,7 @@ button, button:focus, a, a:hover, a:focus, input, input:active, input:focus, tex
 	background: rgba(0, 0, 0, 0.75);
 }
 .pattern {
-	background: url('noise.png') repeat center;
+	background: url('/public/images/noise.png') repeat center;
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -452,7 +452,7 @@ a.selected-item:before, .side-menu a:hover:before {
 ----------------------------------------- */
 
 .fun-facts {
-	background: #333 url('facts.jpeg') no-repeat 50% 80% fixed;
+	background: #333 url('/public/images/facts.jpeg') no-repeat 50% 80% fixed;
 	background-size: cover;
 	position: relative;
 }
@@ -521,7 +521,7 @@ a.selected-item:before, .side-menu a:hover:before {
 ----------------------------------------- */
 
 .technical-skills {
-	background: #333 url('coding-min.jpg') no-repeat 50% 80% fixed;
+	background: #333 url('/public/images/coding-min.jpg') no-repeat 50% 80% fixed;
 	background-size: cover;
 	position: relative;
 }
@@ -768,7 +768,7 @@ a.selected-item:before, .side-menu a:hover:before {
 
 .quote {
 	padding: 80px 0;
-	background: #333 url('qoute.jpg') no-repeat fixed center;
+	background: #333 url('/public/images/qoute.jpg') no-repeat fixed center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-ms-background-size: cover;
