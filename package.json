@@ -7,6 +7,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "simple-autoreload-server": "^0.2.7"
+    "simple-autoreload-server": "0.2.7"
   }
 }
