@@ -1,0 +1,12 @@
+{
+  "name": "ftuyama.github.io",
+  "version": "0.3.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ftuyama/ftuyama.github.io.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "simple-autoreload-server": "^0.2.7"
+  }
+}
