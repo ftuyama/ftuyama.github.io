@@ -1572,14 +1572,14 @@ a.selected-item:before, .side-menu a:hover:before {
 
 .black-link:hover {
 	color: #002038;
- }
+}
 
- .project-image-small {
-	 height: 170px;
-	 width: 256px;
- }
+.project-image-small {
+	height: 170px;
+	width: 256px;
+}
 
- .project-image {
-	 max-height: 300px;
-	 max-width: 600px;
- }
+.project-image {
+	max-height: 300px;
+	max-width: 600px;
+}
