@@ -7,6 +7,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "debug": "2.6.9",
     "simple-autoreload-server": "0.2.7"
   }
 }
