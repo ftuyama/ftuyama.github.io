@@ -6,16 +6,16 @@ $(document).ready(function() {
     // Adjusting loading page //
     $(".loading").delay(1000).addClass("loaded");
 
-    // // Launching and adjusting NiceScroll plugin //
-    // $("html, body").niceScroll({
-    //     scrollspeed: 40,
-    //     mousescrollstep: 30,
-    //     zindex: 9999,
-    //     cursorwidth: 10,
-    //     cursorborder: false,
-    //     cursorborderradius: 0,
-    //     cursorcolor: "#111"
-    // });
+    // Launching and adjusting NiceScroll plugin //
+    $("body").niceScroll({
+        scrollspeed: 40,
+        mousescrollstep: 30,
+        zindex: 9999,
+        cursorwidth: 10,
+        cursorborder: false,
+        cursorborderradius: 0,
+        cursorcolor: "#111"
+    });
 
     // Moving to About me section on clicking mouse icon //
     $("#mouse").on("click", function() {
@@ -67,6 +67,8 @@ $(document).ready(function() {
             scrollbarHeight = viewportHeight / $(document).height() * viewportHeight,
             progress = $(this).scrollTop() / ($(document).height() - viewportHeight),
             distance = progress * (viewportHeight - scrollbarHeight) + scrollbarHeight / 2 - $("#scroll").height() / 2;
+            console.log(progress);
+            console.log(progress);
         $("#scroll")
             .css("top", distance)
             .text(" (" + Math.round(progress * 100) + "%)")
