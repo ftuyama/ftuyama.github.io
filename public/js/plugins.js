@@ -29,7 +29,9 @@ $(document).ready(function() {
         $("#top-nav, #menu").addClass("transition");
         if ($(this).scrollTop() >= 600) {
             $("#top-nav, #menu").addClass("shown");
+            $("#top-nav, #menu").removeClass("hiden");
         } else {
+            $("#top-nav, #menu").addClass("hiden");
             $("#top-nav, #menu").removeClass("shown");
         }
     });
@@ -67,8 +69,6 @@ $(document).ready(function() {
             scrollbarHeight = viewportHeight / $(document).height() * viewportHeight,
             progress = $(this).scrollTop() / ($(document).height() - viewportHeight),
             distance = progress * (viewportHeight - scrollbarHeight) + scrollbarHeight / 2 - $("#scroll").height() / 2;
-            console.log(progress);
-            console.log(progress);
         $("#scroll")
             .css("top", distance)
             .text(" (" + Math.round(progress * 100) + "%)")
@@ -108,51 +108,6 @@ $(document).ready(function() {
         }, 1200);
     });
 
-    // Form Validation in contact section //
-    $("#contact-form").validator().on("submit", function(e) {
-        if (e.isDefaultPrevented()) {
-            $(".form-response").text("Sorry, you didn't fill the form.").fadeIn(1000);
-        } else {
-            e.preventDefault();
-            submitForm();
-        }
-    });
-
-    function submitForm() {
-        // Some Variables
-        var name = $("#name").val(),
-            mail = $("#mail").val(),
-            message = $("#message").val();
-        // Ajax
-        $.ajax({
-            type: "POST",
-            url: "/send_email/",
-            data: "name=" + name + "&mail=" + mail + "&message=" + message,
-            beforeSend: function(text) {
-                $(".submit-btn").html("Sending...");
-                $(".form-response").fadeOut(500).text("");
-            },
-            success: function(text) {
-                if (text == "success") {
-                    $("#contact-form")[0].reset();
-                    $(".form-response").text("Thanks! Your message sent correctly.").fadeIn(1000);
-                    $(".submit-btn").html("Send Message");
-                } else {
-                    $(".form-response").text(text).fadeIn(1000);
-                }
-            }
-        });
-    }
-    // Moving placeholder on focus in contact-me section //
-    $(".contact .form-control").focusout(function() {
-        var textValue = $(this).val();
-        if (textValue === "") {
-            $(this).removeClass("has-value");
-        } else {
-            $(this).addClass("has-value");
-        }
-    });
-
     // Start numbers animate at fun-facts section //
     $.get("https://api.github.com/users/ftuyama", function( github ) {
         $("#facts").appear(function() {
@@ -163,7 +118,25 @@ $(document).ready(function() {
                 number: github.public_repos
             }, 2200);
             $("#number_3").animateNumber({
-                number: 315
+                number: Math.round(+ new Date() / 100000000)
+            }, 2200);
+            $("#number_4").animateNumber({
+                number: 10000
+            }, 2200);
+        }, {
+            accX: 0,
+            accY: -150
+        });
+    }).fail(function() {
+        $("#facts").appear(function() {
+            $("#number_1").animateNumber({
+                number: 68530
+            }, 2200);
+            $("#number_2").animateNumber({
+                number: 30
+            }, 2200);
+            $("#number_3").animateNumber({
+                number: Math.round(+ new Date() / 100000000)
             }, 2200);
             $("#number_4").animateNumber({
                 number: 10000
@@ -272,10 +245,10 @@ function init() {
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
-        zoom: 14,
+        zoom: 10,
 
         // The latitude and longitude to center the map (always required)
-        center: new google.maps.LatLng(-23.20227, -45.90181),
+        center: new google.maps.LatLng(38.6892887, -9.3126656),
 
         scrollwheel: false,
 
@@ -403,14 +376,14 @@ function init() {
 
     // Let"s also add a marker while we"re at it
     var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(30.609788, 32.268555),
+        position: new google.maps.LatLng(38.6892887,-9.3126656),
         /* animation:google.maps.Animation.BOUNCE, Make the marker bounce */
         map: map,
-        title: "Marqa Studio"
+        title: "My location"
     });
 
     var infowindow = new google.maps.InfoWindow({
-        content: "Marqa Studio"
+        content: "My location"
     });
 
     google.maps.event.addListener(marker, "click", function() {

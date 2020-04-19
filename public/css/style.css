@@ -205,6 +205,7 @@ button, button:focus, a, a:hover, a:focus, input, input:active, input:focus, tex
 ----------------------------------------- */
 
 nav {
+    display: inherit;
 	position: fixed;
 	z-index: 999;
 	top: -100%;
@@ -219,6 +220,7 @@ nav {
 	box-shadow: 0 0 8px 2px #848484;
 }
 nav.shown {top: 0;}
+nav.hiden {display: none;}
 nav .logo a {
 	padding: 5px 10px;
 	font-size: 1.2em;
@@ -697,7 +699,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	border-radius: 2px;
 }
 .experiences .timeline .timeline-block {
-	position: relative;
+    position: relative;
 	margin-bottom: 40px;
 }
 .experiences .timeline .timeline-block .icon {
@@ -706,6 +708,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	width: 50px;
 	height: 50px;
 	left: 50%;
+    padding: 8px;
 	margin-left: -25px;
 	border-radius: 50%;
 }
@@ -1216,12 +1219,16 @@ a.selected-item:before, .side-menu a:hover:before {
 	border-left: 10px solid #9E9E9E;
 	left: 130px;
 }
-.footer .icon-wrapper {
+.icon-wrapper {
 	margin-top: 40px;
 	margin-bottom: 40px;
 	line-height: 1;
 }
-.footer .icon-wrapper .icon {
+.icon-wrapper.reduced {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.icon-wrapper .icon {
 	display: inline-block;
 	position: relative;
 	font-size: 2em;
@@ -1234,13 +1241,13 @@ a.selected-item:before, .side-menu a:hover:before {
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;
 }
-.footer .icon-wrapper .icon:before, .footer .icon-wrapper .icon:after {
+.icon-wrapper .icon:before, .icon-wrapper .icon:after {
 	line-height: 50px;
 	width: 50px;
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;
 }
-.footer .icon-wrapper .icon:after {
+.icon-wrapper .icon:after {
 	position: absolute;
 	display: inline-block;
 	font-family: "Ionicons";
@@ -1248,35 +1255,26 @@ a.selected-item:before, .side-menu a:hover:before {
 	-webkit-transform: translateY(70px);
 	transform: translateY(70px);
 }
-.footer .icon-wrapper .icon.fb:after {content: "\f231";}
-.footer .icon-wrapper .icon.tw:after {content: "\f243";}
-.footer .icon-wrapper .icon.gh:after {content: "\f233";}
-.footer .icon-wrapper .icon.gp:after {content: "\f235";}
-.footer .icon-wrapper .icon.li:after {content: "\f239";}
-.footer .icon-wrapper .icon.pin:after {content: "\f2b1";}
-.footer .icon-wrapper .icon.fb:hover {background: #3b5998;}
-.footer .icon-wrapper .icon.tw:hover {background: #55acee;}
-.footer .icon-wrapper .icon.gh:hover {background: #333333;}
-.footer .icon-wrapper .icon.gp:hover {background: #dc4e41;}
-.footer .icon-wrapper .icon.li:hover {background: #0077b5;}
-.footer .icon-wrapper .icon.pin:hover {background: #bd081c;}
+.icon-wrapper .icon.fb:after {content: "\f231";}
+.icon-wrapper .icon.tw:after {content: "\f243";}
+.icon-wrapper .icon.gh:after {content: "\f233";}
+.icon-wrapper .icon.gp:after {content: "\f235";}
+.icon-wrapper .icon.li:after {content: "\f239";}
+.icon-wrapper .icon.pin:after {content: "\f2b1";}
+.icon-wrapper .icon.fb:hover {background: #3b5998;}
+.icon-wrapper .icon.tw:hover {background: #55acee;}
+.icon-wrapper .icon.gh:hover {background: #333333;}
+.icon-wrapper .icon.gp:hover {background: #dc4e41;}
+.icon-wrapper .icon.li:hover {background: #0077b5;}
+.icon-wrapper .icon.pin:hover {background: #bd081c;}
 
-.footer .icon-wrapper .icon:hover:before{
+.icon-wrapper .icon:hover:before{
 	-webkit-transform: translateY(-70px);
     transform: translateY(-70px);
 }
-.footer .icon-wrapper .icon:hover:after{
+.icon-wrapper .icon:hover:after{
 	-webkit-transform: translateY(0px);
     transform: translateY(0px);
-}
-.footer .copyright {
-	border-top: 1px solid #333;
-	padding: 15px 0;
-}
-.footer .copyright h6 {
-	color: #777;
-	font-weight: 400;
-	letter-spacing: 1.5px;
 }
 
 /* End  Footer section */
