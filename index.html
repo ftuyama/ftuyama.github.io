@@ -318,10 +318,7 @@
                 <button class="filter round-corners" data-filter=".other" data-content="OTHER">OTHER</button>
             </div>
             <div id="Container">
-              <% projects_count = @user.projects.count %>
-              <% @user.projects.each_with_index do |project, i| %>
-                <%= render :partial => 'project', :locals => { :project => project, :number => (i%projects_count+1) } %>
-              <% end %>
+
             </div>
         </div>
     </div>
