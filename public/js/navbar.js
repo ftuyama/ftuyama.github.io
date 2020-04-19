@@ -4,7 +4,7 @@ var lastScrollTop = 0;
 var delta = 5;
 var navbarHeight = $('nav').outerHeight();
 
-$(window).scroll(function(event){
+$(window).scroll(function(event) {
     didScroll = true;
 });
 
@@ -27,11 +27,9 @@ function hasScrolled() {
     if (st > lastScrollTop && st > navbarHeight){
         // Scroll Down
         $('nav').animate({ top: '-69px' }, 'easeInOutCubic');
-    } else {
+    } else if (st + $(window).height() < $(document).height()) {
         // Scroll Up
-        if(st + $(window).height() < $(document).height()) {
         $('nav').animate({ top: '0px' }, 'easeInOutCubic');
-        }
     }
 
     lastScrollTop = st;
