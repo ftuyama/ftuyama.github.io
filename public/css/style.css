@@ -81,6 +81,9 @@ button, button:focus, a, a:hover, a:focus, input, input:active, input:focus, tex
 	right: 0;
 	background: rgba(0, 0, 0, 0.75);
 }
+.service i {
+    padding-top: 19px;
+}
 .pattern {
 	background: url('/public/images/noise.png') repeat center;
 	position: absolute;
@@ -929,11 +932,20 @@ a.selected-item:before, .side-menu a:hover:before {
 	text-transform: uppercase;
 	letter-spacing: 1.5px;
 }
+.white-popup h3 i {
+	color: #23527c;
+    vertical-align: baseline;
+}
+.white-popup h3:hover i {
+	color: #002038;
+}
 .white-popup img {margin-top: 20px; margin-bottom: 20px;}
-.white-popup p {
-	text-align: left;
+.white-popup .description {
+    padding: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+	text-align: center;
 	line-height: 2;
-	padding-left: 10px;
 }
 .white-popup p.cat {text-align: center; padding-left: 0;}
 .mfp-close, button.mfp-close, button.mfp-arrow {
@@ -1282,6 +1294,15 @@ a.selected-item:before, .side-menu a:hover:before {
 	-webkit-transform: translateY(0px);
     transform: translateY(0px);
 }
+.footer .copyright {
+	border-top: 1px solid #333;
+	padding: 15px 0;
+}
+.footer .copyright h6 {
+	color: #777;
+	font-weight: 400;
+	letter-spacing: 1.5px;
+}
 
 /* End  Footer section */
 
@@ -1303,6 +1324,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	cursor: pointer;
 	color:  #ededed;
 	background: #111;
+    padding-top: 6px;
 	opacity: 0.7;
 	-webkit-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
@@ -1578,12 +1600,17 @@ a.selected-item:before, .side-menu a:hover:before {
 	color: #002038;
 }
 
-.project-image-small {
+.project-image-wrapper {
 	height: 170px;
 	width: 256px;
 }
 
+.project-image-small {
+	height: 170px;
+	width: auto;
+}
+
 .project-image {
 	max-height: 300px;
-	max-width: 600px;
+	max-width: 800px;
 }

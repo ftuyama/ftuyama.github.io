@@ -81,11 +81,13 @@
             <!-- Menu items -->
             <br>
             <br>
+            <br>
+            <br>
+            <br>
             <a href="#header">Home</a>
             <a href="#about-me">about me</a>
             <a href="#experiences">experiences</a>
             <a href="#portfolio">Portfolio</a>
-            <a href="#contact-me">Contact Me</a>
             <a href="#skills">skills</a>
             <a href="#services">services</a>
         </div>
@@ -323,10 +325,69 @@
             <div class="controls">
                 <button class="filter round-corners active" data-filter="all" data-content="All">All</button>
                 <button class="filter round-corners" data-filter=".web" data-content="WEB">WEB</button>
-                <button class="filter round-corners" data-filter=".app" data-content="APP">APP</button>
+                <button class="filter round-corners" data-filter=".backend" data-content="BACKEND">BACKEND</button>
                 <button class="filter round-corners" data-filter=".other" data-content="OTHER">OTHER</button>
             </div>
             <div id="Container">
+
+                <div class="mix backend col-md-3 col-sm-6 col-xs-6" data-my-order="0" style="display: inline-block;" data-bound="">
+                    <div class="img-wrapper overlay-slide-right center project-image-wrapper">
+                        <img src="public/images/projects/TEEG.jpg" class="center-block img-responsive project-image-small" alt="TEEG">
+
+                        <div class="overlay-content">
+                            <span>TEEG</span>
+                            <a href="#test-popup-0" class="open-popup-link">
+                                <i class="ion-android-search"></i>
+                            </a>
+                            <!-- popUp content -->
+                            <div id="test-popup-0" class="white-popup mfp-hide">
+                                <h3>
+                                    <a href="https://github.com/ftuyama/TEEG" class="black-link">
+                                    TEEG <i class="black-icon icon gh ion-social-github"></i></a>
+                                </h3>
+                                <div class="heading-line"></div><br>
+                                <img src="public/images/projects/TEEG-details.png" class="center-block img-responsive project-image" alt="TEEG">
+
+                                <h4>Graduation Thesis</h4>
+                                <p class="description">The thesis studies the EEG signals and their characteristics, using neural networks of deep learning to
+                                    model high level abstractions. The elaborated algorithm was used to control a robotic arm, culminating
+                                    in the proof of concept of a BCI (Brain Computer Interface) application.</p>
+                                <div><a href="https://www.youtube.com/watch?v=jYJjh-k50YA" class="black-link">Youtube demonstration</a></div>
+                                <div><a href="http://www.bdita.bibl.ita.br/TGsDigitais/lista_resumo.php?num_tg=73814" class="black-link">University registry</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mix web col-md-3 col-sm-6 col-xs-6" data-my-order="1" style="display: inline-block;" data-bound="">
+                    <div class="img-wrapper overlay-slide-right center project-image-wrapper">
+                        <img src="public/images/projects/crono.jpg" class="center-block img-responsive project-image-small" alt="crono">
+
+                        <div class="overlay-content">
+                            <span>Crono</span>
+                            <a href="#test-popup-1" class="open-popup-link">
+                                <i class="ion-android-search"></i>
+                            </a>
+                            <!-- popUp content -->
+                            <div id="test-popup-1" class="white-popup mfp-hide">
+                                <h3>
+                                    <a href="https://github.com/ftuyama/Crono" class="black-link">
+                                    Crono <i class="black-icon icon gh ion-social-github"></i></a>
+                                </h3>
+                                <div class="heading-line"></div><br>
+                                <img src="public/images/projects/crono-details.jpg" class="center-block img-responsive project-image" alt="crono">
+
+                                <h4>University project</h4>
+                                <p class="description">A web calendar application using Node.js and Angular.js, developed by
+                                    hobby. Crono integrates Google and Facebook events, adding extra features using, allowing a “Kanban
+                                    mode”. Also includes a chat using Redis cache as content storage.</p>
+                                <div><a href="http://crono.herokuapp.com/" class="black-link">Live project</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
 
             </div>
         </div>
@@ -695,6 +756,10 @@
                         <a target="_blank" href="https://github.com/ftuyama" class="icon gh ion-social-github"></a>
                         <a target="_blank" href="https://br.linkedin.com/in/felipe-tuyama" class="icon li ion-social-linkedin"></a>
                     </div>
+                </div>
+
+                <div class="col-md12 col-xs-12 copyright">
+                    <h6>© Felipe Tuyama profile developed using vanilla js, css and html.</h6>
                 </div>
             </div>
         </div>
