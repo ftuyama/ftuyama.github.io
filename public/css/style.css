@@ -155,11 +155,11 @@ button, button:focus, a, a:hover, a:focus, input, input:active, input:focus, tex
 	padding: 0.5rem 2rem;
 }
 .header .content a {
-	display: inline-block;
-	width: 10rem;
+	display: block;
+	width: 15rem;
 	border: 1px solid #fff;
-	padding: 8px;
-	margin: 10px;
+	padding: 16px;
+	margin: 30px auto;
 }
 .header .content a:hover {
 	background: #fff;
@@ -713,13 +713,14 @@ a.selected-item:before, .side-menu a:hover:before {
 	position: absolute;
 	width: 75px;
 	height: 75px;
-	left: 49%;
-    margin-left: -25px;
+	left: 50%;
+    margin-left: -40px;
     padding: 2px;
     border-radius: 50%;
     border-style: solid;
     border-width: 1px;
-	border-color: black;
+    border-color: black;
+    z-index: 10;
 }
 .experiences .timeline .timeline-block .icon i {
 	color: #fff;
@@ -756,7 +757,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	position: absolute;
 	content: "";
 	left: 44%;
-	top: 10px;
+    top: 20px;
 	height: 0;
 	width: 0;
 	border-left: 15px solid #222;
@@ -1559,7 +1560,7 @@ a.selected-item:before, .side-menu a:hover:before {
 
 	/* Start portfolio section */
 	.portfolio .controls button {margin-right: 10px;}
-	/* End Portfolio section */
+    /* End Portfolio section */
 }
 
 
@@ -1568,12 +1569,12 @@ a.selected-item:before, .side-menu a:hover:before {
 	/* Start  Experiences section */
 	.experiences .timeline .timeline-block .content {
 		width: 100%;
-		margin-top: 63px;
+        margin-top: 88px;
 	}
 
 	.experiences .timeline .timeline-block .content::before, .experiences .timeline .timeline-block .content.right::before {
 		left: 50%;
-		top: 33px;
+        top: 58px;
 		margin-left: -15px;
 		border-left: 15px solid transparent;
 		border-right: 15px solid transparent;
