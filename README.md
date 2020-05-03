@@ -19,3 +19,11 @@ make run
 ```
 
 Then the app should be available at [http://localhost:8080](http://localhost:8080)
+
+## Running validations
+
+Validate URLs and image formats using:
+
+```bash
+make test
+```
