@@ -47,4 +47,17 @@ describe('Page', () => {
       });
     });
   });
+
+  describe('#images', () => {
+    before((done) => {
+      imgs = $('img');
+      done();
+    });
+
+    it('should have lazy loading', () => {
+        imgs.each((i, img) => {
+        assert.equal('lazy', img.attribs.loading, `${img.attribs.src} should have lazy load`);
+      });
+    });
+  });
 });
