@@ -576,6 +576,10 @@ a.selected-item:before, .side-menu a:hover:before {
 	margin-top: 10px;
 	text-transform: uppercase;
 }
+.technical-skills .skill h3 {
+	margin-top: 10px;
+	color: #eee;
+}
 .technical-skills .other-skills {margin-top: 40px;}
 .technical-skills .bar_group {
 	text-align: left;
@@ -829,7 +833,7 @@ a.selected-item:before, .side-menu a:hover:before {
 /* ---------------------------------------
 			Start  Portfolio Section
 ----------------------------------------- */
-.portfolio .controls { margin-top: 60px;}
+.portfolio .controls { margin-top: 40px; margin-bottom: 40px;}
 .portfolio .controls button {
 	position: relative;
 	background-color: transparent;
@@ -872,8 +876,8 @@ a.selected-item:before, .side-menu a:hover:before {
 	position: relative;
 	overflow: hidden;
 }
-.portfolio .overlay-content .open-popup-link {
-	display: inline-block;
+.portfolio .overlay-content .open-popup-link .ion-android-search {
+    padding: 8px;
 }
 .portfolio .overlay-content {
 	position: absolute;
