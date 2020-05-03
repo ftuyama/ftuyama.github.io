@@ -7,7 +7,13 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "crawler": "^1.2.1",
     "debug": "4.1.1",
-    "simple-autoreload-server": "0.2.7"
+    "mocha": "^7.1.2",
+    "simple-autoreload-server": "0.2.7",
+    "url-exists": "^1.0.3"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
