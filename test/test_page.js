@@ -55,7 +55,7 @@ describe('Page', () => {
     });
 
     it('should have lazy loading', () => {
-        imgs.each((i, img) => {
+      imgs.each((i, img) => {
         assert.equal('lazy', img.attribs.loading, `${img.attribs.src} should have lazy load`);
       });
     });
