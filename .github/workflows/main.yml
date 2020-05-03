@@ -21,6 +21,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - uses: kloudtek/kt-gh-action-npm@0.8.2
 
     # Runs the mocha tests
     - name: Run tests
