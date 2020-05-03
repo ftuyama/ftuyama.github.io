@@ -705,9 +705,6 @@ a.selected-item:before, .side-menu a:hover:before {
     position: relative;
 	margin-bottom: 40px;
 }
-.experiences .timeline .timeline-block .icon {
-    padding: 8px;
-}
 .experiences .timeline .timeline-block .brand {
 	background: white;
 	position: absolute;
@@ -722,10 +719,12 @@ a.selected-item:before, .side-menu a:hover:before {
     border-color: black;
     z-index: 10;
 }
+.experiences .timeline .timeline-block .icon {
+    padding: 12px;
+}
 .experiences .timeline .timeline-block .icon i {
-	color: #fff;
-	font-size: 2rem;
-	line-height: 50px;
+	color: black;
+	font-size: 3rem;
 }
 .experiences .timeline .timeline-block .content {
 	width: 44%;
@@ -745,6 +744,18 @@ a.selected-item:before, .side-menu a:hover:before {
 	color: #b3b3b3;
 	display: inline-block;
 	margin: 5px;
+}
+.experiences .timeline .timeline-block .content li {
+	color: #b3b3b3;
+	margin: 5px;
+}
+.experiences .timeline .timeline-block .content .highlight {
+	color: white;
+    font-weight: bold;
+    margin: 5px;
+}
+.experiences .timeline .timeline-block .content .link-effect:hover {
+    text-decoration: underline;
 }
 .experiences .timeline .timeline-block .content span.job-title {
 	font-size: 1.2em;
