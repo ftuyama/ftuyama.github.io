@@ -1,15 +1,15 @@
-var fs = require('fs');
-var Crawler = require("crawler");
+const fs = require('fs');
+const Crawler = require('crawler');
 
 function loadPage(callback) {
-  fs.readFile('index.html', 'utf8', function(err, page) {
+  fs.readFile('index.html', 'utf8', (err, page) => {
     if (err) throw err;
-      new Crawler().queue([{
+    new Crawler().queue([{
       html: page,
-      callback: function (err, res, _done) {
-        if (err) throw err;
+      callback(error, res) {
+        if (error) throw error;
         callback(page, res.$);
-      }
+      },
     }]);
   });
 }

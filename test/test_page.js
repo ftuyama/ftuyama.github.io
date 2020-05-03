@@ -1,34 +1,34 @@
-var assert = require('assert');
-var urlExists = require('url-exists');
-var loadPage  = require('./html_helper');
+const assert = require('assert');
+const urlExists = require('url-exists');
+const loadPage = require('./html_helper');
 
-describe('Page', function() {
-  before(function(done){
-    loadPage(function(pageHTML, pageObj) {
+describe('Page', () => {
+  before((done) => {
+    loadPage((pageHTML, pageObj) => {
       page = pageHTML;
       $ = pageObj;
       done();
-    })
+    });
   });
 
-  describe('#page', function() {
-    it('should exist', function() {
+  describe('#page', () => {
+    it('should exist', () => {
       assert.equal(true, !!page);
     });
 
-    it('should have title', function() {
+    it('should have title', () => {
       assert.equal('Felipe Tuyama', $('title').text(), 'Invalid page title');
     });
   });
 
-  describe('#links', function() {
-    before(function(done){
+  describe('#links', () => {
+    before((done) => {
       links = $('a');
       done();
     });
 
-    it('should have target blank', function() {
-      links.each(function(i, link) {
+    it('should have target blank', () => {
+      links.each((i, link) => {
         if (!link.attribs.href.match(/.*(resume|google|#).*/)) {
           // console.log(link.attribs.href);
           assert.equal('_blank', link.attribs.target, `${link.attribs.href} should have target _blank`);
@@ -36,10 +36,10 @@ describe('Page', function() {
       });
     });
 
-    it('should be valid', function() {
-      links.each(function(i, link) {
+    it('should be valid', () => {
+      links.each((i, link) => {
         if (!link.attribs.href.match(/.*(resume|google|vigil|#).*/)) {
-          urlExists(link.attribs.href, function(err, exists) {
+          urlExists(link.attribs.href, (err, exists) => {
             if (err) throw err;
             assert.equal(true, exists, `${link.attribs.href} no longer exists`);
           });
