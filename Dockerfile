@@ -1,4 +1,4 @@
-FROM node:12.14.1-alpine
+FROM node:12.16.3-alpine
 
 LABEL com.github.actions.name="Run tests"
 LABEL com.github.actions.description="Run npm eslint."
