@@ -189,49 +189,4 @@ $(document).ready(function() {
         mainClass: "mfp-fade"
     });
 
-    // Owl Carousel for testimonials section //
-    $(".test-owl").owlCarousel({
-        loop: true,
-        responsiveClass: true,
-        margin: 10,
-        nav: false,
-        dots: false,
-        dotsEach: false,
-        autoplay: true,
-        autoplayTimeout: 4000,
-        autoplayHoverPause: true,
-        responsive: {
-            0: {
-                items: 1
-            }
-        }
-    });
-
-    // Owl Carousel for Partners section //
-    $(".partners-owl-carousel").owlCarousel({
-        loop: true,
-        responsiveClass: true,
-        margin: 10,
-        nav: false,
-        dots: false,
-        dotsEach: false,
-        autoplay: true,
-        autoplayTimeout: 1500,
-        autoplayHoverPause: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            480: {
-                items: 2
-            },
-            768: {
-                items: 3
-            },
-            1000: {
-                items: 5
-            }
-        }
-    });
-
 });

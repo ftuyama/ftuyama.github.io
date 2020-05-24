@@ -85,7 +85,7 @@ button, button:focus, a, a:hover, a:focus, input, input:active, input:focus, tex
     padding-top: 19px;
 }
 .pattern {
-	background: url('/public/images/noise.png') repeat center;
+	background: url('/public/images/noise.webp') repeat center;
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -120,7 +120,7 @@ button, button:focus, a, a:hover, a:focus, input, input:active, input:focus, tex
 .header .large-header {
 	position: relative;
 	width: 100%;
-	background: #333 url('/public/images/header.jpg') center center no-repeat fixed;
+	background: #333 url('/public/images/header.webp') center center no-repeat fixed;
 	overflow: hidden;
 	-webkit-background-size: cover;
     -moz-background-size: cover;
@@ -290,7 +290,8 @@ span.bar {
 	top: 0;
 	left: -100%;
 	width: 100%;
-	height: 100%;
+    height: 100%;
+    padding: 15%;
 	background: rgba(26,28,29,0.95);
 	-webkit-transition: 0.5s;
 	-moz-transition: 0.5s;
@@ -457,7 +458,7 @@ a.selected-item:before, .side-menu a:hover:before {
 ----------------------------------------- */
 
 .fun-facts {
-	background: #333 url('/public/images/facts.jpeg') no-repeat 50% 80% fixed;
+	background: #333 url('/public/images/facts.webp') no-repeat 50% 80% fixed;
 	background-size: cover;
 	position: relative;
 }
@@ -526,7 +527,7 @@ a.selected-item:before, .side-menu a:hover:before {
 ----------------------------------------- */
 
 .technical-skills {
-	background: #333 url('/public/images/coding-min.jpg') no-repeat 50% 80% fixed;
+	background: #333 url('/public/images/coding-min.webp') no-repeat 50% 80% fixed;
 	background-size: cover;
 	position: relative;
 }
@@ -796,7 +797,7 @@ a.selected-item:before, .side-menu a:hover:before {
 
 .quote {
 	padding: 80px 0;
-	background: #333 url('/public/images/qoute.jpg') no-repeat fixed center;
+	background: #333 url('/public/images/qoute.webp') no-repeat fixed center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-ms-background-size: cover;
@@ -984,7 +985,7 @@ a.selected-item:before, .side-menu a:hover:before {
 ----------------------------------------- */
 
 .testmonials {
-	background: #333 url('testimonials.jpg') center center no-repeat fixed;
+	background: #333 url('testimonials.webp') center center no-repeat fixed;
 	background-size: cover;
 	color: #fff;
 	position: relative;
