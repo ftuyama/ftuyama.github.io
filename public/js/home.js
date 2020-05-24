@@ -1,3 +1,28 @@
+function startWOW() {
+    if (typeof WOW !== 'undefined') {
+        new WOW().init();
+    } else {
+        setInterval(startWOW, 1000);
+    }
+};
+
+function startNiceScroll() {
+    if (typeof $("body").niceScroll !== 'undefined') {
+        // Launching and adjusting NiceScroll plugin //
+        $("body").niceScroll({
+            scrollspeed: 40,
+            mousescrollstep: 30,
+            zindex: 9999,
+            cursorwidth: 10,
+            cursorborder: false,
+            cursorborderradius: 0,
+            cursorcolor: "#111"
+        });
+    } else {
+        setInterval(startNiceScroll, 1000);
+    }
+}
+
 /* global $, alert, console*/
 $(document).ready(function() {
 
@@ -6,16 +31,9 @@ $(document).ready(function() {
     // Adjusting loading page //
     $(".loading").delay(1000).addClass("loaded");
 
-    // Launching and adjusting NiceScroll plugin //
-    $("body").niceScroll({
-        scrollspeed: 40,
-        mousescrollstep: 30,
-        zindex: 9999,
-        cursorwidth: 10,
-        cursorborder: false,
-        cursorborderradius: 0,
-        cursorcolor: "#111"
-    });
+    startWOW();
+
+    startNiceScroll();
 
     // Moving to About me section on clicking mouse icon //
     $("#mouse").on("click", function() {
