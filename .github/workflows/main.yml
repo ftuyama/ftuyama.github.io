@@ -23,6 +23,10 @@ jobs:
     - uses: actions/checkout@v2
     - uses: ./
 
+    # Runs eslint
+    - name: Run eslint
+      run: npm run eslint
+
     # Runs the mocha tests
     - name: Run tests
       run: npm test
