@@ -116,8 +116,24 @@ STYLES = [{
     }]
 }];
 
+function waitUntil(condition, callback) {
+    if (condition()) {
+        callback();
+    } else {
+        setInterval(() => {
+            waitUntil(condition, callback);
+        }, 500);
+    }
+}
+
+function isDefined(object) {
+    return typeof object !== 'undefined';
+}
+
 function init() {
-    $(document).ready(function() {
+    waitUntil(() => {
+        return isDefined(google);
+    }, () => {
         // Basic options for a simple Google Map
         // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
         var mapOptions = {

@@ -1,26 +1,23 @@
-function startWOW() {
-    if (typeof WOW !== 'undefined') {
-        new WOW().init();
+function waitUntil(condition, callback) {
+    if (condition()) {
+        callback();
     } else {
-        setInterval(startWOW, 1000);
+        setInterval(() => {
+            waitUntil(condition, callback);
+        }, 500);
     }
-};
+}
 
-function startNiceScroll() {
-    if (typeof $("body").niceScroll !== 'undefined') {
-        // Launching and adjusting NiceScroll plugin //
-        $("body").niceScroll({
-            scrollspeed: 40,
-            mousescrollstep: 30,
-            zindex: 9999,
-            cursorwidth: 10,
-            cursorborder: false,
-            cursorborderradius: 0,
-            cursorcolor: "#111"
-        });
+function jqueryFnDefined(func) {
+    if (typeof func === "string") {
+        return typeof $.fn[func] !== 'undefined';
     } else {
-        setInterval(startNiceScroll, 1000);
+        return func.every(jqueryFnDefined);
     }
+}
+
+function isDefined(object) {
+    return typeof object !== 'undefined';
 }
 
 /* global $, alert, console*/
@@ -31,27 +28,25 @@ $(document).ready(function() {
     // Adjusting loading page //
     $(".loading").delay(1000).addClass("loaded");
 
-    startWOW();
-
-    startNiceScroll();
-
-    // Moving to About me section on clicking mouse icon //
-    $("#mouse").on("click", function() {
-        $("html, body").animate({
-            scrollTop: $("#about-me").offset().top
-        }, 1000);
+    waitUntil(() => {
+        return isDefined(WOW);
+    }, () => {
+        new WOW().init();
     });
 
-    // Adjusting the top nav showing the top nav when scrolling >= 600 //
-    $(window).scroll(function() {
-        $("#top-nav, #menu").addClass("transition");
-        if ($(this).scrollTop() >= 600) {
-            $("#top-nav, #menu").addClass("shown");
-            $("#top-nav, #menu").removeClass("hiden");
-        } else {
-            $("#top-nav, #menu").addClass("hiden");
-            $("#top-nav, #menu").removeClass("shown");
-        }
+    waitUntil(() => {
+        return jqueryFnDefined('niceScroll');
+    }, () => {
+        // Launching and adjusting NiceScroll plugin //
+        $("body").niceScroll({
+            scrollspeed: 40,
+            mousescrollstep: 30,
+            zindex: 9999,
+            cursorwidth: 10,
+            cursorborder: false,
+            cursorborderradius: 0,
+            cursorcolor: "#111"
+        });
     });
 
     // Adjusting menu showing and hiding menu on click //
@@ -67,16 +62,47 @@ $(document).ready(function() {
         $("#side-menu").toggleClass("active-side-menu");
     });
 
-    // controlling side menu //
-    // smooth scrolling when a link in the menu is clicked //
-    $("a[href^='#']").on("click", function(event) {
-        var target = $($(this).attr("href"));
-
-        if (target.length) {
-            event.preventDefault();
+    waitUntil(() => {
+        return jqueryFnDefined(['animate']);
+    }, () => {
+        // Moving to About me section on clicking mouse icon //
+        $("#mouse").on("click", function() {
             $("html, body").animate({
-                scrollTop: target.offset().top
-            }, 1500);
+                scrollTop: $("#about-me").offset().top
+            }, 1000);
+        });
+
+        // controlling side menu //
+        // smooth scrolling when a link in the menu is clicked //
+        $("a[href^='#']").on("click", function(event) {
+            var target = $($(this).attr("href"));
+
+            if (target.length) {
+                event.preventDefault();
+                $("html, body").animate({
+                    scrollTop: target.offset().top
+                }, 1500);
+            }
+        });
+
+        // Accordion in About-me Section //
+        $(".acc-title").click(function() {
+            $(".acc-title").not(this).removeClass("active");
+            $(this).toggleClass("active");
+            $(this).siblings(".acc-content").slideToggle(350);
+            $(".acc-title").not(this).siblings(".acc-content").slideUp(300);
+        });
+    });
+
+    // Adjusting the top nav showing the top nav when scrolling >= 600 //
+    $(window).scroll(function() {
+        $("#top-nav, #menu").addClass("transition");
+        if ($(this).scrollTop() >= 600) {
+            $("#top-nav, #menu").addClass("shown");
+            $("#top-nav, #menu").removeClass("hiden");
+        } else {
+            $("#top-nav, #menu").addClass("hiden");
+            $("#top-nav, #menu").removeClass("shown");
         }
     });
 
@@ -100,14 +126,6 @@ $(document).ready(function() {
         }, 800);
     });
 
-    // Accordion in About-me Section //
-    $(".acc-title").click(function() {
-        $(".acc-title").not(this).removeClass("active");
-        $(this).toggleClass("active");
-        $(this).siblings(".acc-content").slideToggle(350);
-        $(".acc-title").not(this).siblings(".acc-content").slideUp(300);
-    });
-
     // Back to top button //
     // showing the button when scroll > 400  //
     var backToTop = $(".back-to-top");
@@ -120,91 +138,110 @@ $(document).ready(function() {
     });
 
     // back to top on clicking the button //
-    backToTop.click(function() {
-        $("html, body").animate({
-            scrollTop: 0
-        }, 1200);
+    waitUntil(() => {
+        return jqueryFnDefined(['animate']);
+    }, () => {
+        backToTop.click(function() {
+            $("html, body").animate({
+                scrollTop: 0
+            }, 1200);
+        });
     });
 
-    // Start numbers animate at fun-facts section //
-    $.get("https://api.github.com/users/ftuyama", function( github ) {
-        $("#facts").appear(function() {
-            $("#number_1").animateNumber({
-                number: 68530
-            }, 2200);
-            $("#number_2").animateNumber({
-                number: github.public_repos
-            }, 2200);
-            $("#number_3").animateNumber({
-                number: Math.round(+ new Date() / 100000000)
-            }, 2200);
-            $("#number_4").animateNumber({
-                number: 10000
-            }, 2200);
-        }, {
-            accX: 0,
-            accY: -150
-        });
-    }).fail(function() {
-        $("#facts").appear(function() {
-            $("#number_1").animateNumber({
-                number: 68530
-            }, 2200);
-            $("#number_2").animateNumber({
-                number: 30
-            }, 2200);
-            $("#number_3").animateNumber({
-                number: Math.round(+ new Date() / 100000000)
-            }, 2200);
-            $("#number_4").animateNumber({
-                number: 10000
-            }, 2200);
-        }, {
-            accX: 0,
-            accY: -150
+    // Start numbers animate at fun-facts section
+    waitUntil(() => {
+        return jqueryFnDefined(['appear', 'animateNumber']);
+    }, () => {
+        $.get("https://api.github.com/users/ftuyama", function( github ) {
+            $("#facts").appear(function() {
+                $("#number_1").animateNumber({
+                    number: 68530
+                }, 2200);
+                $("#number_2").animateNumber({
+                    number: github.public_repos
+                }, 2200);
+                $("#number_3").animateNumber({
+                    number: Math.round(+ new Date() / 100000000)
+                }, 2200);
+                $("#number_4").animateNumber({
+                    number: 10000
+                }, 2200);
+            }, {
+                accX: 0,
+                accY: -150
+            });
+        }).fail(function() {
+            $("#facts").appear(function() {
+                $("#number_1").animateNumber({
+                    number: 68530
+                }, 2200);
+                $("#number_2").animateNumber({
+                    number: 30
+                }, 2200);
+                $("#number_3").animateNumber({
+                    number: Math.round(+ new Date() / 100000000)
+                }, 2200);
+                $("#number_4").animateNumber({
+                    number: 10000
+                }, 2200);
+            }, {
+                accX: 0,
+                accY: -150
+            });
         });
     });
 
     // start easy pie chart plugin when skills section appear //
-    $("#skills").appear(function() {
-        $(".chart").easyPieChart({
-            barColor: "#eaeaea",
-            trackColor: false,
-            scaleColor: false,
-            lineWidth: 10,
-            lineCap: "round",
-            size: 150,
-            animate: 1500
+    waitUntil(() => {
+        return jqueryFnDefined(['easyPieChart', 'appear', 'animateNumber']);
+    }, () => {
+        $("#skills").appear(function() {
+            $(".chart").easyPieChart({
+                barColor: "#eaeaea",
+                trackColor: false,
+                scaleColor: false,
+                lineWidth: 10,
+                lineCap: "round",
+                size: 150,
+                animate: 1500
+            });
+            // start numbers animate at skills section //
+            $("#chart_num_1").animateNumber({
+                number: 88
+            }, 1500);
+            $("#chart_num_2").animateNumber({
+                number: 63
+            }, 1500);
+            $("#chart_num_3").animateNumber({
+                number: 73
+            }, 1500);
+            $("#chart_num_4").animateNumber({
+                number: 45
+            }, 1500);
+        }, {
+            accX: 0,
+            accY: -150
         });
-        // start numbers animate at skills section //
-        $("#chart_num_1").animateNumber({
-            number: 88
-        }, 1500);
-        $("#chart_num_2").animateNumber({
-            number: 63
-        }, 1500);
-        $("#chart_num_3").animateNumber({
-            number: 73
-        }, 1500);
-        $("#chart_num_4").animateNumber({
-            number: 45
-        }, 1500);
-    }, {
-        accX: 0,
-        accY: -150
     });
 
     // start mixitup plugin in portfolio section //
-    $("#Container").mixItUp();
-
-    // magnific popup in portfolio section //
-    $(".open-popup-link").magnificPopup({
-        type: "inline",
-        fixedContentPos: !1,
-        removalDelay: 100,
-        closeBtnInside: !0,
-        preloader: !1,
-        mainClass: "mfp-fade"
+    waitUntil(() => {
+        return jqueryFnDefined('mixItUp');
+    }, () => {
+        $("#Container").mixItUp();
     });
 
+    // magnific popup in portfolio section //
+    waitUntil(() => {
+        return jqueryFnDefined('magnificPopup');
+    }, () => {
+        $(".open-popup-link").magnificPopup({
+            type: "inline",
+            fixedContentPos: !1,
+            removalDelay: 100,
+            closeBtnInside: !0,
+            preloader: !1,
+            mainClass: "mfp-fade"
+        });
+    });
 });
