@@ -2,7 +2,7 @@ function waitUntil(condition, callback) {
     if (condition()) {
         callback();
     } else {
-        setInterval(() => {
+        setTimeout(() => {
             waitUntil(condition, callback);
         }, 500);
     }
