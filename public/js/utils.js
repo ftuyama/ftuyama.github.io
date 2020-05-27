@@ -4,7 +4,7 @@ function waitUntil(condition, callback) {
     } else {
         setTimeout(() => {
             waitUntil(condition, callback);
-        }, 500);
+        }, 250);
     }
 }
 

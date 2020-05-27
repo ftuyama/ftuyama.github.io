@@ -1631,3 +1631,16 @@ a.selected-item:before, .side-menu a:hover:before {
 	max-height: 300px;
 	max-width: 800px;
 }
+
+:root #header + #content > #left > #rlblock_left {
+    display: none !important;
+  }
+.black-icon {
+    color: black;
+    font-size: 24px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .site-link:hover * {
+    color: blue !important;
+  }
