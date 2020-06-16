@@ -118,6 +118,12 @@ $(document).ready(function() {
         return 'google' in window;
     }, () => {
         initGoogleMaps();
+
+        waitUntil(() => {
+            return jqueryFnDefined('niceScroll');
+        }, () => {
+            $("body").getNiceScroll().resize();
+        });
     });
 });
 

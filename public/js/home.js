@@ -18,13 +18,14 @@ $(document).ready(function() {
         // Launching and adjusting NiceScroll plugin //
         $("body").niceScroll({
             scrollspeed: 40,
-            mousescrollstep: 30,
+            mousescrollstep: 40,
             zindex: 9999,
             cursorwidth: 10,
             cursorborder: false,
             cursorborderradius: 0,
             cursorcolor: "#111"
         });
+        $("body").getNiceScroll().resize();
     });
 
     // Adjusting menu showing and hiding menu on click //
