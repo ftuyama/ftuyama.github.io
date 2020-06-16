@@ -106,7 +106,7 @@ STYLES = [{
 }, {
     "featureType": "water",
     "elementType": "geometry",
-    "stylers": [{
+    "st|||||ylers": [{
         "color": "#000000"
     }, {
         "lightness": 17
@@ -118,12 +118,6 @@ $(document).ready(function() {
         return 'google' in window;
     }, () => {
         initGoogleMaps();
-
-        waitUntil(() => {
-            return jqueryFnDefined('niceScroll');
-        }, () => {
-            $("body").getNiceScroll().resize();
-        });
     });
 });
 
@@ -166,4 +160,12 @@ function initGoogleMaps() {
     google.maps.event.addListener(marker, "click", function() {
         infowindow.open(map, marker);
     });
+
+    setTimeout(() => {
+        waitUntil(() => {
+            return jqueryFnDefined('niceScroll');
+        }, () => {
+            $("body").getNiceScroll().resize();
+        });
+    }, 500);
 }
