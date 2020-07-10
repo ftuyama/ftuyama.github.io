@@ -1,6 +1,6 @@
 # ftuyama.github.io
 
-![CI](https://github.com/ftuyama/ftuyama.github.io/workflows/CI/badge.svg?branch=master)[![Code Climate](https://codeclimate.com/github/ftuyama/ftuyama.github.io/badges/gpa.svg)](https://codeclimate.com/github/ftuyama/ftuyama.github.io)
+![Build status](https://github.com/ftuyama/ftuyama.github.io/workflows/Tests/badge.svg?branch=master)[![Code Climate](https://codeclimate.com/github/ftuyama/ftuyama.github.io/badges/gpa.svg)](https://codeclimate.com/github/ftuyama/ftuyama.github.io)
 
 This is my personal portfolio website, using vanilla HTML/JS/CSS.
 
