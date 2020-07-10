@@ -4,4 +4,4 @@
 # User-agent: *
 # Disallow: /
 
-Sitemap: https://ftuyama.cf/sitemap.xml
+Sitemap: https://ftuyama.com/sitemap.xml
