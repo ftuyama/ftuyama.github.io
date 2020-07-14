@@ -17,7 +17,7 @@ describe('Page', () => {
     });
 
     it('should have title', () => {
-      assert.equal('Felipe Tuyama - Software Engineer', $('title').text(), 'Invalid page title');
+      assert.equal('Felipe Tuyama | Software Engineer', $('title').text(), 'Invalid page title');
     });
   });
 
