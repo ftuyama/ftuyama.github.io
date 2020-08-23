@@ -1321,17 +1321,33 @@ a.selected-item:before, .side-menu a:hover:before {
 	-webkit-transform: translateY(70px);
 	transform: translateY(70px);
 }
+.ion-stackoverflow {
+    content: url(/public/fonts/stackoverflow.svg);
+    padding: 10px;
+}
+.ion-stackoverflow:after {
+	position: absolute;
+	display: inline-block;
+	font-family: "Ionicons";
+	left: calc(50% - 25px);
+	-webkit-transform: translateY(70px);
+	transform: translateY(70px);
+}
 .icon-wrapper .icon.fb:after {content: "\f231";}
 .icon-wrapper .icon.tw:after {content: "\f243";}
 .icon-wrapper .icon.gh:after {content: "\f233";}
 .icon-wrapper .icon.gp:after {content: "\f235";}
 .icon-wrapper .icon.li:after {content: "\f239";}
+.icon-wrapper .icon.so:after {content: url(/public/fonts/stackoverflow.svg);}
+.icon-wrapper .icon.yt:after {content: "\f24c";}
 .icon-wrapper .icon.pin:after {content: "\f2b1";}
 .icon-wrapper .icon.fb:hover {background: #3b5998;}
 .icon-wrapper .icon.tw:hover {background: #55acee;}
 .icon-wrapper .icon.gh:hover {background: #333333;}
 .icon-wrapper .icon.gp:hover {background: #dc4e41;}
 .icon-wrapper .icon.li:hover {background: #0077b5;}
+.icon-wrapper .icon.so:hover {background: #f48024;}
+.icon-wrapper .icon.yt:hover {background: #c4302b;}
 .icon-wrapper .icon.pin:hover {background: #bd081c;}
 
 .icon-wrapper .icon:hover:before{
