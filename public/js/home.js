@@ -47,7 +47,8 @@ $(document).ready(function() {
     }, () => {
         const githubApiUrl = "https://api.github.com/repos/ftuyama/ftuyama.github.io/contents/public/certificates";
         const localhostUrl = "/public/cache/certificates.json";
-        $.get(localhostUrl, function(certificates) {
+        const url = location.hostname == 'localhost' ? localhostUrl : githubApiUrl;
+        $.get(url, function(certificates) {
             for (i in certificates) {
                 var certificate_url = `https://ftuyama.com/public/certificates/${certificates[i]['name']}`;
                 $("#certificates").append(`
@@ -165,7 +166,8 @@ $(document).ready(function() {
     }, () => {
         const githubApiUrl = "https://api.github.com/users/ftuyama";
         const localhostUrl = "/public/cache/ftuyama.json"
-        $.get(localhostUrl, function( github ) {
+        const url = location.hostname == 'localhost' ? localhostUrl : githubApiUrl;
+        $.get(url, function( github ) {
             $("#facts").appear(function() {
                 $("#number_1").animateNumber({
                     number: 68530
