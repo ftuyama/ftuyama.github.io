@@ -41,6 +41,41 @@ $(document).ready(function() {
         $("#side-menu").toggleClass("active-side-menu");
     });
 
+    // Owl Carousel certificates
+    waitUntil(() => {
+        return jqueryFnDefined(['owlCarousel']);
+    }, () => {
+        $.get("public/certificates/", function(certificates_index) {
+            $(certificates_index).find('.name').each(() => {
+                var certificate_name = $(this).text();
+                if (certificate_name != '..') {
+                    var certificate_url = `https://ftuyama.com/public/certificates/${certificate_name}`;
+                    $("#certificates").append(`<embed src=
+                        "https://drive.google.com/viewerng/viewer?embedded=true&url=${certificate_url}"
+                        width="500" height="375">
+                    `);
+                }
+            });
+
+            $("#certificates").owlCarousel({
+                loop: true,
+                responsiveClass: true,
+                margin: 10,
+                nav: true,
+                dots: true,
+                dotsEach: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    }
+                }
+            });
+        });
+    });
+
     waitUntil(() => {
         return jqueryFnDefined(['animate']);
     }, () => {
