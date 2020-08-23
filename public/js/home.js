@@ -45,30 +45,23 @@ $(document).ready(function() {
     waitUntil(() => {
         return jqueryFnDefined(['owlCarousel']);
     }, () => {
-        $.get("https://api.github.com/repos/ftuyama/ftuyama.github.io/contents/public/certificates", function(certificates) {
+        const githubApiUrl = "https://api.github.com/repos/ftuyama/ftuyama.github.io/contents/public/certificates";
+        const localhostUrl = "/public/cache/certificates.json";
+        $.get(githubApiUrl, function(certificates) {
             for (i in certificates) {
                 var certificate_url = `https://ftuyama.com/public/certificates/${certificates[i]['name']}`;
-                $("#certificates").append(`<embed src=
-                    "https://drive.google.com/viewerng/viewer?embedded=true&url=${certificate_url}"
-                    width="500" height="375">
+                $("#certificates").append(`<embed src="${certificate_url}#toolbar=0&navpanes=0&scrollbar=0"
+                    width="480" height="360">
                 `);
             };
 
             $("#certificates").owlCarousel({
+                center: true,
+                items: 2,
                 loop: true,
-                items: 3,
-                responsiveClass: true,
                 margin: 10,
-                nav: false,
-                dots: false,
-                dotsEach: false,
                 autoplay: true,
-                autoplayTimeout: 3000,
-                responsive: {
-                    0: {
-                        items: 1
-                    }
-                }
+                autoplayTimeout: 2000
             });
         });
     });
@@ -163,7 +156,9 @@ $(document).ready(function() {
     waitUntil(() => {
         return jqueryFnDefined(['appear', 'animateNumber']);
     }, () => {
-        $.get("https://api.github.com/users/ftuyama", function( github ) {
+        const githubApiUrl = "https://api.github.com/users/ftuyama";
+        const localhostUrl = "/public/cache/ftuyama.json"
+        $.get(githubApiUrl, function( github ) {
             $("#facts").appear(function() {
                 $("#number_1").animateNumber({
                     number: 68530
