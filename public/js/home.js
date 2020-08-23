@@ -45,28 +45,25 @@ $(document).ready(function() {
     waitUntil(() => {
         return jqueryFnDefined(['owlCarousel']);
     }, () => {
-        $.get("public/certificates/", function(certificates_index) {
-            $(certificates_index).find('.name').each(() => {
-                var certificate_name = $(this).text();
-                if (certificate_name != '..') {
-                    var certificate_url = `https://ftuyama.com/public/certificates/${certificate_name}`;
-                    $("#certificates").append(`<embed src=
-                        "https://drive.google.com/viewerng/viewer?embedded=true&url=${certificate_url}"
-                        width="500" height="375">
-                    `);
-                }
-            });
+        $.get("https://api.github.com/repos/ftuyama/ftuyama.github.io/contents/public/certificates", function(certificates) {
+            for (i in certificates) {
+                var certificate_url = `https://ftuyama.com/public/certificates/${certificates[i]['name']}`;
+                $("#certificates").append(`<embed src=
+                    "https://drive.google.com/viewerng/viewer?embedded=true&url=${certificate_url}"
+                    width="500" height="375">
+                `);
+            };
 
             $("#certificates").owlCarousel({
                 loop: true,
+                items: 3,
                 responsiveClass: true,
                 margin: 10,
-                nav: true,
-                dots: true,
+                nav: false,
+                dots: false,
                 dotsEach: false,
                 autoplay: true,
                 autoplayTimeout: 3000,
-                autoplayHoverPause: true,
                 responsive: {
                     0: {
                         items: 1
