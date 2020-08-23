@@ -936,6 +936,27 @@ a.selected-item:before, .side-menu a:hover:before {
 	left:  50%;
 	opacity: 1;
 }
+
+@media (max-width: 767px) {
+    .certificates embed {
+        display: none;
+    }
+}
+
+
+.certificates {
+    margin-top: 40px;
+}
+.certificate-link-wrapper {
+    margin: 12px 32px;
+}
+.certificate-link {
+    color: #23527c;
+}
+.certificate-link:hover {
+    color: #002038;
+}
+
 .white-popup {
 	position: relative;
 	background: #FFF;
@@ -1619,7 +1640,8 @@ a.selected-item:before, .side-menu a:hover:before {
 
 .project-image-wrapper {
 	height: 170px;
-	width: 256px;
+    width: 256px;
+    margin: auto;
 }
 
 .project-image-small {

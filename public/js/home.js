@@ -47,11 +47,18 @@ $(document).ready(function() {
     }, () => {
         const githubApiUrl = "https://api.github.com/repos/ftuyama/ftuyama.github.io/contents/public/certificates";
         const localhostUrl = "/public/cache/certificates.json";
-        $.get(githubApiUrl, function(certificates) {
+        $.get(localhostUrl, function(certificates) {
             for (i in certificates) {
                 var certificate_url = `https://ftuyama.com/public/certificates/${certificates[i]['name']}`;
-                $("#certificates").append(`<embed src="${certificate_url}#toolbar=0&navpanes=0&scrollbar=0"
-                    width="480" height="360">
+                $("#certificates").append(`
+                    <div>
+                        <embed src="${certificate_url}#toolbar=0&navpanes=0&scrollbar=0" width="480" height="360">
+                        <div class='certificate-link-wrapper'>
+                            <a target="_blank" class='certificate-link' href="${certificate_url}">
+                                ${certificates[i]['name'].replace('.pdf', '')}
+                            </a>
+                        </div>
+                    </div>
                 `);
             };
 
@@ -158,7 +165,7 @@ $(document).ready(function() {
     }, () => {
         const githubApiUrl = "https://api.github.com/users/ftuyama";
         const localhostUrl = "/public/cache/ftuyama.json"
-        $.get(githubApiUrl, function( github ) {
+        $.get(localhostUrl, function( github ) {
             $("#facts").appear(function() {
                 $("#number_1").animateNumber({
                     number: 68530
