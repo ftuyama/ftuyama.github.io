@@ -353,6 +353,16 @@ a.selected-item:before, .side-menu a:hover:before {
 			Start About me Section
 ----------------------------------------- */
 
+.github-img {
+    margin: -50px 0 0 100px;
+}
+
+@media (max-width: 767px) {
+    .github-img  {
+        margin: 200px 0 0 -100px;
+    }
+}
+
 .about-me .my-pic, .about-me .introduction {
  margin-bottom: 20px;
 }
