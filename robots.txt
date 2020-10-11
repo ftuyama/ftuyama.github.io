@@ -4,4 +4,7 @@
 # User-agent: *
 # Disallow: /
 
+User-agent: *
+Disallow: /public/
+
 Sitemap: https://ftuyama.com/sitemap.xml
