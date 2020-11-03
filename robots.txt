@@ -5,6 +5,9 @@
 # Disallow: /
 
 User-agent: *
-Disallow: /public/
+Disallow: /public/certificates/
+
+User-agent: *
+Disallow: /public/resume.pdf
 
 Sitemap: https://ftuyama.com/sitemap.xml
