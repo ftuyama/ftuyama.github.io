@@ -10,7 +10,7 @@
     "crawler": "1.2.2",
     "debug": "4.2.0",
     "eslint": "7.8.1",
-    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-config-airbnb-base": "14.2.1",
     "eslint-plugin-import": "2.22.1",
     "mocha": "8.2.0",
     "simple-autoreload-server": "0.2.7",
