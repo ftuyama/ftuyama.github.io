@@ -798,6 +798,28 @@ a.selected-item:before, .side-menu a:hover:before {
 	border-left: none;
 }
 
+.experience-section {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.experience-text {
+    color: #444;
+	font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+
+.experience-text .highlight {
+    color: #666;
+}
+.experience-text .highlight:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
 /* End  Experiences section */
 
 
