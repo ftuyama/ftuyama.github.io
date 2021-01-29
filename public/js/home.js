@@ -6,7 +6,7 @@ $(document).ready(function() {
     // Adjusting loading page //
     $(".loading").delay(1000).addClass("loaded");
 
-    var experience_time = Math.trunc(10 * (new Date() - new Date('2016-06-01')) / (86400 * 365 * 1000)) / 10;
+    var experience_time = Math.trunc(10 * (new Date() - new Date('2015-06-01')) / (86400 * 365 * 1000)) / 10;
     $(".exp").text(experience_time);
 
     waitUntil(() => {
