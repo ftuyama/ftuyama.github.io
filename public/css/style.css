@@ -556,7 +556,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	position: relative;
 	display: inline-block;
 	min-height: 155px;
-	color: #eee;
+	color: #5ae;
 	font-size: 16px;
 	font-weight: 400;
 	text-transform: uppercase;
@@ -601,10 +601,13 @@ a.selected-item:before, .side-menu a:hover:before {
 	width: 0%;
 	height: 10px;
 	border-radius: 6px;
-	background: #afa;
+	background: #afa !important;
 	margin-bottom: 10px;
 	-webkit-transition: width 1s;
 	transition: width 1s;
+}
+.technical-skills .bar_group__bar.red {
+	background: #faa !important;
 }
 .technical-skills .bar_group__bar.thick::before {
 	display: block;
