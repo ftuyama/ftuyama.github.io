@@ -278,10 +278,10 @@ function initGoogleMaps() {
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
-        zoom: 11,
+        zoom: 14,
 
         // The latitude and longitude to center the map (always required)
-        center: new google.maps.LatLng(38.6892887, -9.3126656),
+        center: new google.maps.LatLng(-23.201487, -45.8888498),
 
         scrollwheel: false,
 
@@ -299,7 +299,7 @@ function initGoogleMaps() {
 
     // Let"s also add a marker while we"re at it
     var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(38.6892887,-9.3126656),
+        position: new google.maps.LatLng(-23.199278, -45.881897),
         /* animation:google.maps.Animation.BOUNCE, Make the marker bounce */
         map: map,
         title: "My location"
