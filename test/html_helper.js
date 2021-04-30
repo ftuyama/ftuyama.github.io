@@ -7,7 +7,7 @@ function loadPage(callback) {
     new Crawler().queue([{
       html: page,
       callback(error, res) {
-        if (error) throw error;
+        if (error) console.log(error);
         callback(page, res.$);
       },
     }]);
