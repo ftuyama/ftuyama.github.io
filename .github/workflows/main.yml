@@ -30,5 +30,5 @@ jobs:
       run: npm run eslint
 
     # Runs the mocha tests
-    - name: Run tests
-      run: npm test
+    #- name: Run tests
+    #  run: npm test
