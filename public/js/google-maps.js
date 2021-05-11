@@ -153,7 +153,7 @@ STYLES = [
       "featureType": "road.arterial",
       "stylers": [
         {
-          "visibility": "off"
+          "color": "#746855"
         }
       ]
     },
@@ -197,7 +197,7 @@ STYLES = [
       "featureType": "road.local",
       "stylers": [
         {
-          "visibility": "off"
+          "color": "#746855"
         }
       ]
     },
@@ -278,10 +278,10 @@ function initGoogleMaps() {
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
-        zoom: 14,
+        zoom: 13,
 
         // The latitude and longitude to center the map (always required)
-        center: new google.maps.LatLng(-23.201487, -45.8888498),
+        center: new google.maps.LatLng(-23.1944292, -45.8821124),
 
         scrollwheel: false,
 
@@ -299,7 +299,7 @@ function initGoogleMaps() {
 
     // Let"s also add a marker while we"re at it
     var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(-23.199278, -45.881897),
+        position: new google.maps.LatLng(-23.1944292, -45.8821124),
         /* animation:google.maps.Animation.BOUNCE, Make the marker bounce */
         map: map,
         title: "My location"
