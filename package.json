@@ -13,7 +13,7 @@
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-plugin-import": "2.22.1",
     "mocha": "9.1.2",
-    "simple-autoreload-server": "0.2.7",
+    "simple-autoreload-server": "0.2.15",
     "url-exists": "1.0.3"
   },
   "scripts": {
