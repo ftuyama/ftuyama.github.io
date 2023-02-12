@@ -272,7 +272,7 @@ span.bar {
 	-o-transition: 0.5s;
 	transition: 0.5s;
 }
-.menu.shown span.bar {background: #181818;}
+.menu.shown span.bar {background: #2F3136;}
 .menu.active-menu span.bar {background: #fff;}
 .active-menu .b1 {
 	-webkit-transform: rotate(-45deg) translate(-9px,7px);
@@ -431,7 +431,7 @@ a.selected-item:before, .side-menu a:hover:before {
 .about-me .why-me .accordion .acc-item .acc-title i {
 	position: absolute;
 	right: 20px;
-	color: #181818;
+	color: #2F3136;
 	-webkit-transform: rotate(180deg);
 	-ms-transform: rotate(180deg);
 	transform: rotate(180deg);
@@ -441,9 +441,9 @@ a.selected-item:before, .side-menu a:hover:before {
 	transition: all 0.3s ease-in-out;
 }
 .about-me .why-me .accordion .acc-item .acc-title.active {
-	background: #181818;
+	background: #2F3136;
 	color: #fff;
-	border-color: #181818;
+	border-color: #2F3136;
 }
 .about-me .why-me .accordion .acc-item .acc-title.active i {
 	-webkit-transform: rotate(0deg);
@@ -544,6 +544,7 @@ a.selected-item:before, .side-menu a:hover:before {
 .technical-skills h2 {
 	color: #eaeaea;
 	position: relative;
+	
 }
 .technical-skills p.title {
 	color: #eaeaea;
@@ -749,7 +750,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	border: 1px solid #222;
 	padding: 20px;
 	color: #222;
-	background: #222;
+	background: #2F3136;
 	text-align: left;
 }
 .experiences .timeline .timeline-block .content h3 {
@@ -890,7 +891,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	left: 0;
 	padding: 8px 15px;
 	border-radius: 3px;
-	background: #181818;
+	background: #2F3136;
 	color: #fff;
 	-webkit-transform: translateX(-110%);
     -ms-transform: translateX(-110%);
@@ -1193,8 +1194,8 @@ a.selected-item:before, .side-menu a:hover:before {
 	transition: all 0.3s ease-in-out;
 }
 .contact .submit-btn:hover {
-	border: 1px solid #181818;
-	background: #181818;
+	border: 1px solid #2F3136;
+	background: #2F3136;
 	color: #fff;
 }
 .contact .submit-btn:active {
@@ -1215,7 +1216,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	position: relative;
 	background: #fff;
 	font-size: 3rem;
-	color: #181818;
+	color: #2F3136;
 	display: block;
 	width: 80px;
 	height: 80px;
@@ -1230,7 +1231,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	padding: 40px 0 20px;
 }
 .contact .contact-info .info .info-content h3 {
-	color: #181818;
+	color: #2F3136;
 	text-transform: uppercase;
 	letter-spacing: 1.5px;
 }
