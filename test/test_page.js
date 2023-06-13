@@ -17,7 +17,7 @@ describe('Page', () => {
     });
 
     it('should have title', () => {
-      assert.equal('Felipe Tuyama | Software Engineer', $('title').text(), 'Invalid page title');
+      assert.equal('Felipe Tuyama | Senior Software Engineer', $('title').text(), 'Invalid page title');
     });
   });
 
@@ -38,7 +38,7 @@ describe('Page', () => {
 
     it('should be valid', () => {
       links.each((i, link) => {
-        if (!link.attribs.href.match(/.*(resume|google|infinitusgo|vigil|twitter|#).*/)) {
+        if (!link.attribs.href.match(/.*(resume|buson|teaminternational|google|infinitusgo|vigil|twitter|researchgate|stackoverflow|#).*/)) {
           urlExists(link.attribs.href, (err, exists) => {
             if (err) throw err;
             assert.equal(true, exists, `${link.attribs.href} no longer exists`);

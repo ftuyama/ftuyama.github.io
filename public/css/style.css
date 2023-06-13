@@ -544,7 +544,7 @@ a.selected-item:before, .side-menu a:hover:before {
 .technical-skills h2 {
 	color: #eaeaea;
 	position: relative;
-	
+
 }
 .technical-skills p.title {
 	color: #eaeaea;
@@ -737,6 +737,12 @@ a.selected-item:before, .side-menu a:hover:before {
     border-width: 1px;
     border-color: black;
     z-index: 10;
+}
+.experiences .timeline .timeline-block .brand.small {
+	width: 25px;
+	height: 25px;
+    margin-top: 56px;
+    margin-left: 8px;
 }
 .experiences .timeline .timeline-block .icon {
     padding: 12px;
