@@ -7,13 +7,13 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "crawler": "1.2.2",
-    "debug": "4.3.3",
-    "eslint": "7.8.1",
-    "eslint-config-airbnb-base": "14.2.1",
-    "eslint-plugin-import": "2.22.1",
-    "mocha": "9.1.2",
-    "simple-autoreload-server": "0.2.7",
+    "crawler": "1.4.0",
+    "debug": "4.3.4",
+    "eslint": "8.44.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-plugin-import": "2.27.5",
+    "mocha": "10.2.0",
+    "simple-autoreload-server": "0.2.15",
     "url-exists": "1.0.3"
   },
   "scripts": {

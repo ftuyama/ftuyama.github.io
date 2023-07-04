@@ -5,6 +5,6 @@ LABEL com.github.actions.description="Run npm eslint."
 LABEL com.github.actions.icon="toggle-right"
 LABEL com.github.actions.color="gray-dark"
 
-COPY entrypoint.sh /entrypoint.sh
+COPY script/entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

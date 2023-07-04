@@ -584,11 +584,12 @@ a.selected-item:before, .side-menu a:hover:before {
 	bottom: 0;
 	font-size: 2.1rem;
 }
-.technical-skills .skill h2 {
+.technical-skills .skill h3 {
 	margin-top: 10px;
 	text-transform: uppercase;
+	color: #eee;
 }
-.technical-skills .skill h3 {
+.technical-skills .skill h4 {
 	margin-top: 10px;
 	color: #eee;
 }
@@ -1394,7 +1395,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	border-top: 1px solid #333;
 	padding: 15px 0;
 }
-.footer .copyright h6 {
+.footer .copyright h5 {
 	color: #777;
 	font-weight: 400;
 	letter-spacing: 1.5px;

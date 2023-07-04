@@ -7,6 +7,7 @@ function loadPage(callback) {
     new Crawler().queue([{
       html: page,
       callback(error, res) {
+        // eslint-disable-next-line no-console
         if (error) console.log(error);
         callback(page, res.$);
       },
