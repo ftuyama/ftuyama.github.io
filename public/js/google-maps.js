@@ -1,4 +1,3 @@
-
 /* Launching Google map */
 
 STYLES = [
@@ -274,7 +273,6 @@ $(document).ready(function() {
 });
 
 function initGoogleMaps() {
-    // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
@@ -282,7 +280,6 @@ function initGoogleMaps() {
 
         // The latitude and longitude to center the map (always required)
         center: new google.maps.LatLng(-23.1944292, -45.8821124),
-
         scrollwheel: false,
 
         // How you would like to style the map.
