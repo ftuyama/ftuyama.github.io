@@ -55,7 +55,7 @@ $(document).ready(function() {
         const url = location.hostname == 'localhost' ? localhostUrl : githubApiUrl;
         $.get(url, function(certificates) {
             for (i in certificates) {
-                var certificate_url = `https://ftuyama.com/public/certificates/${certificates[i]['name']}`;
+                var certificate_url = `https://ftuyama.github.io/public/certificates/${certificates[i]['name']}`;
                 $("#certificates").append(`
                     <div>
                         <embed src="${certificate_url}#toolbar=0&navpanes=0&scrollbar=0" width="480" height="360">

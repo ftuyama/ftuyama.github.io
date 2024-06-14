@@ -10,4 +10,4 @@ Disallow: /public/certificates/
 User-agent: *
 Disallow: /public/resume.pdf
 
-Sitemap: https://ftuyama.com/sitemap.xml
+Sitemap: https://ftuyama.github.io/sitemap.xml
