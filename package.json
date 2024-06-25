@@ -7,7 +7,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "crawler": "1.4.0",
+    "crawler": "2.0.1",
     "debug": "4.3.4",
     "eslint": "8.44.0",
     "eslint-config-airbnb-base": "15.0.0",
