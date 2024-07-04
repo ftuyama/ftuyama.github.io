@@ -1,8 +1,11 @@
-const assert = require('assert');
-const urlExists = require('url-exists');
-const loadPage = require('./html_helper');
+import assert from 'assert';
+import urlExists from 'url-exists';
+import loadPage from './html_helper.js';
 
 describe('Page', () => {
+  let page; let $; let links; let
+    imgs;
+
   before((done) => {
     loadPage((pageHTML, pageObj) => {
       page = pageHTML;
