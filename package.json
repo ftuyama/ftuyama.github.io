@@ -5,15 +5,14 @@
     "type": "git",
     "url": "git@github.com:ftuyama/ftuyama.github.io.git"
   },
-  "dependencies": {},
   "devDependencies": {
-    "crawler": "1.4.0",
-    "debug": "4.3.4",
-    "eslint": "8.44.0",
+    "crawler": "^2.0.1",
+    "debug": "4.3.5",
+    "eslint": "8.57.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.27.5",
-    "mocha": "10.2.0",
-    "simple-autoreload-server": "0.2.15",
+    "mocha": "10.6.0",
+    "simple-autoreload-server": "^0.2.15",
     "url-exists": "1.0.3"
   },
   "scripts": {
