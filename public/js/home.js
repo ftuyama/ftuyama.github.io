@@ -8,8 +8,10 @@ $(document).ready(function() {
 
     var experience_time = Math.trunc(10 * (new Date() - new Date('2016-01-01')) / (86400 * 365 * 1000)) / 10;
     var age_time = Math.trunc((new Date() - new Date('1994-11-10')) / (86400 * 365 * 1000));
+    var year = new Date().getFullYear();
     $(".exp").text(experience_time);
     $(".age").text(age_time);
+    $(".year").text(year);
 
     waitUntil(() => {
         return isDefined(WOW);
