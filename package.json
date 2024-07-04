@@ -6,7 +6,7 @@
     "url": "git@github.com:ftuyama/ftuyama.github.io.git"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
+    "@babel/eslint-parser": "^7.11.0",
     "crawler": "^2.0.1",
     "debug": "4.3.5",
     "eslint": "8.57.0",
