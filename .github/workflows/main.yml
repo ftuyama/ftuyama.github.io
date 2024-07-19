@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ master ]
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to run the workflow'
+        default: 'custom-branch'
 
 jobs:
   build:
