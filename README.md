@@ -4,8 +4,6 @@
 
 This is my personal portfolio website, using vanilla HTML/JS/CSS.
 
-My resume.pdf is available at <https://ftuyama.github.io/public/resume.pdf>
-
 ## Run the project
 
 Install dependencies:
