@@ -1,0 +1,23 @@
+{
+  "name": "ftuyama.github.io",
+  "version": "0.3.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ftuyama/ftuyama.github.io.git"
+  },
+  "devDependencies": {
+    "crawler": "^2.0.1",
+    "debug": "4.3.5",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "mocha": "10.6.0",
+    "simple-autoreload-server": "^0.2.15",
+    "url-exists": "1.0.3"
+  },
+  "scripts": {
+    "eslint": "eslint test",
+    "test": "mocha"
+  }
+}
