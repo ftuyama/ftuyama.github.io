@@ -9,9 +9,8 @@
   "devDependencies": {
     "crawler": "^2.0.1",
     "debug": "^4.3.7",
-    "eslint": "^9.17.0",
-    "@eslint/js": "^9.17.0",
-    "eslint-config-airbnb-base": "^16.0.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.31.0",
     "mocha": "^10.8.2",
     "simple-autoreload-server": "^0.2.15",
