@@ -41,7 +41,7 @@ describe('Page', () => {
 
     it('should be valid', () => {
       links.each((i, link) => {
-        if (!link.attribs.href.match(/.*(resume|buson|teaminternational|google|infinitusgo|linkedin|vigil|twitter|researchgate|stackoverflow|#).*/)) {
+        if (!link.attribs.href.match(/.*(resume|maximus|buson|teaminternational|google|infinitusgo|linkedin|vigil|twitter|researchgate|stackoverflow|#).*/)) {
           urlExists(link.attribs.href, (err, exists) => {
             if (err) throw err;
             assert.equal(true, exists, `${link.attribs.href} no longer exists`);
