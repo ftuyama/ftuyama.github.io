@@ -24,7 +24,7 @@ class Circle {
     if (!this.active) return;
     ctx.beginPath();
     ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2, false);
-    ctx.fillStyle = `rgba(87,106,120,${this.active})`;
+    ctx.fillStyle = `rgba(85,170,238,${this.active})`;
     ctx.fill();
   }
 }
@@ -107,15 +107,15 @@ export function initAnimatedHeader(): void {
       ctx!.clearRect(0, 0, width, height);
       for (const p of points) {
         const dist = getDistance(mouse, p);
-        if (dist < 500) {
-          p.active = 0.3;
-          p.circle.active = 0.6;
-        } else if (dist < 8000) {
-          p.active = 0.1;
-          p.circle.active = 0.3;
-        } else if (dist < 20000) {
-          p.active = 0.02;
-          p.circle.active = 0.1;
+        if (dist < 600) {
+          p.active = 0.4;
+          p.circle.active = 0.7;
+        } else if (dist < 10000) {
+          p.active = 0.15;
+          p.circle.active = 0.4;
+        } else if (dist < 25000) {
+          p.active = 0.04;
+          p.circle.active = 0.15;
         } else {
           p.active = 0;
           p.circle.active = 0;
@@ -133,7 +133,7 @@ export function initAnimatedHeader(): void {
       ctx!.beginPath();
       ctx!.moveTo(p.x, p.y);
       ctx!.lineTo(close.x, close.y);
-      ctx!.strokeStyle = `rgba(245,255,250,${p.active})`;
+      ctx!.strokeStyle = `rgba(85,170,238,${p.active * 0.6})`;
       ctx!.stroke();
     }
   }

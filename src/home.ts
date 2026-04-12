@@ -65,7 +65,7 @@ export function initApp(): void {
 function initLoadingScreen(): void {
   setTimeout(() => {
     document.querySelector('.loading')?.classList.add('loaded');
-  }, 1000);
+  }, 600);
 }
 
 function initDynamicText(): void {

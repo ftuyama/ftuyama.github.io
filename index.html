@@ -11,14 +11,14 @@
     <meta name="description" content="Felipe Tuyama is a Remote Senior Software Engineer with a degree from ITA (Aeronautics Institute of Technology) in 2017. Currently working as a Ruby software engineer in an international remote team.">
     <meta name="keywords" content="Felipe Tuyama,ftuyama,tuyama,felipe-tuyama,software engineer,remote,software,ruby,developer,ita">
     <meta name="author" content="Felipe Tuyama">
-    <meta name="theme-color" content="#111111">
-    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f0f0f">
+    <meta name="color-scheme" content="dark">
 
     <!-- Preconnect to Google Fonts for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Open Sans Google font with modern loading -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Raleway:wght@700&display=swap">
+    <!-- Inter font with modern loading -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <!-- Favicons -->
     <link rel="shortcut icon" href="/public/favico/ruby.ico">
     <link rel="apple-touch-icon" href="/public/favico/ruby.ico">
@@ -75,8 +75,10 @@
                     <p>Hello, It's me</p>
                     <h1>Felipe Tuyama</h1>
                     <p>Remote Senior Software Engineer</p>
-                    <a href='#about-me'>About me</a>
-                    <a href="#experiences">my works</a>
+                    <div class="hero-ctas">
+                        <a href='#about-me' class="cta-primary">About me</a>
+                        <a href="#experiences">my works</a>
+                    </div>
                 </div>
                 <!-- End container -->
             </div>
@@ -129,7 +131,7 @@
                     <p class="introduce">talented Senior Software Engineer</p>
                     <p class="intro">I am a <span class="age">26</span> years old remote senior software engineer
                         specialist in web development using Ruby
-                        on Rails, Elixir, Vue.js and Typescript, with <span class="exp">5</span>+ years of
+                        on Rails, Vue.js and Typescript, with <span class="exp">10</span>+ years of
                         experience.
                         <br>
                         <br>
@@ -144,11 +146,12 @@
                     <div class="heading-line"></div>
                     <div class="personal-wrapper">
                         <span><strong>name: </strong>Felipe Tuyama</span>
-                        <span><strong>time of experience: </strong><strong><span class="exp">5</span>+ years</strong>
+                        <span><strong>time of experience: </strong><strong><span class="exp">10</span>+ years</strong>
                             <p><small>as Software Engineer</small></p>
                         </span>
-                        <span><strong>graduation: </strong><a target="_blank" href="http://www.ita.br/" class="blue-link">ITA (2017)</a></span>
-                        <span><strong>post graduation: </strong><a target="_blank" href="https://www.mtu.ie/" class="blue-link">MTU (2023)</a></span>
+                        <span><strong>graduation: </strong>Computer Engineering - <a target="_blank" href="http://www.ita.br/" class="blue-link">ITA (2017)</a></span>
+                        <span><strong>post graduation: </strong>MSc in Software Architecture &amp; Design - <a target="_blank" href="https://www.mtu.ie/" class="blue-link">MTU (2025)</a></span>
+                        <span><strong>postgraduate: </strong>Applied AI Engineering - <a target="_blank" href="https://unipds.com.br/" class="blue-link">UNIPDS (2026)</a></span>
                         <span><strong>location: </strong><a target="_blank" href="#map" class="blue-link">🇧🇷 - SP - BR</a></span>
                         <div class="center">
                             <!-- Social links -->
@@ -482,7 +485,7 @@
         <div class="experience-section">
             <p><b>Total Experience Time</b></p>
             <div class="heading-line"></div>
-            <p class="experience-text"><span class="exp">5</span>+ years
+            <p class="experience-text"><span class="exp">10</span>+ years
                 <a target="_blank" href="https://www.linkedin.com/in/felipe-tuyama">
                     <span class="highlight">as Software Engineer</span>
                 </a>
@@ -711,7 +714,7 @@
             <div class="title">
                 <h2 class="h2">technical skills</h2>
                 <div class="heading-line"></div>
-                <p class="title">Technologies and tools I work with daily, built over <span class="exp">5</span>+ years of professional experience.</p>
+                <p class="title">Technologies and tools I work with daily, built over <span class="exp">10</span>+ years of professional experience.</p>
             </div>
             <!-- Start skill cards -->
             <div class="skills-wrapper row">
@@ -862,16 +865,10 @@
     </div>
     <!-- End Services Section -->
 
-    <div>
-        <!-- Google Map -->
-        <!-- https://maps-website.com/ -->
-        <div style="position: relative; overflow: hidden; width: 100%;">
-          <iframe title="Google Maps" style="width: 100%; display: block;" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=1000&amp;height=500&amp;hl=en&amp;q=%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos+()&amp;t=&amp;z=3&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-          </iframe>
-        </div>
-    </div>
-    </div>
-    </div>
+    <!-- Google Map -->
+    <div style="position: relative; overflow: hidden; width: 100%;">
+        <iframe title="Google Maps" style="width: 100%; display: block; filter: invert(0.9) hue-rotate(180deg);" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=1000&amp;height=500&amp;hl=en&amp;q=%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos+()&amp;t=&amp;z=3&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+        </iframe>
     </div>
 
 
@@ -885,7 +882,6 @@
                 <div class="col-lg-12 col-12 links" aria-labelledby="footer-social-label">
                     <!-- Social links -->
                     <div class="icon-wrapper center">
-                        <a target="_blank" href="#" class="icon fb ion-social-facebook" aria-label="Facebook"></a>
                         <a target="_blank" href="https://ko-fi.com/lelouchiee" class="icon kofi ion-coffee" aria-label="Ko-fi"></a>
                         <a target="_blank" href="https://www.youtube.com/channel/UCde9tQl7PSeTdMRMtcv-HTw" class="icon yt ion-social-youtube" aria-label="Youtube"></a>
                         <a target="_blank" href="https://github.com/ftuyama" class="icon gh ion-social-github" aria-label="Github"></a>
