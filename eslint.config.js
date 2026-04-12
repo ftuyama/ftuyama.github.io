@@ -1,6 +1,7 @@
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
-export default [
+export default tseslint.config(
   {
     files: ['test/**/*.js'],
     languageOptions: {
@@ -20,22 +21,20 @@ export default [
     },
   },
   {
-    files: ['public/js/home.js'],
+    files: ['src/**/*.ts'],
+    extends: tseslint.configs.recommended,
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'script',
+      sourceType: 'module',
       globals: {
         ...globals.browser,
-        $: 'readonly',
-        WOW: 'readonly',
       },
     },
     rules: {
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'no-console': 'warn',
       'prefer-const': 'error',
       'no-var': 'error',
       eqeqeq: 'error',
     },
   },
-];
+);

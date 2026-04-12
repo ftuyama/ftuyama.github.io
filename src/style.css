@@ -213,11 +213,8 @@ nav {
 	width: 100%;
 	padding: 15px 0;
 	background: rgba(100, 100, 100, 0.3);
-	-webkit-box-shadow: 0 0 8px 2px #848484;
-	-moz-box-shadow: 0 0 8px 2px #848484;
-	-ms-box-shadow: 0 0 8px 2px #848484;
-	-o-box-shadow: 0 0 8px 2px #848484;
 	box-shadow: 0 0 8px 2px #848484;
+	transition: top 0.3s cubic-bezier(0.65, 0, 0.35, 1);
 }
 nav.shown {top: 0;}
 nav.hiden {display: none;}
@@ -450,12 +447,14 @@ a.selected-item:before, .side-menu a:hover:before {
 	color: #fff;
 }
 .about-me .why-me .accordion .acc-item .acc-content {
-	padding: 10px;
     margin: 0;
     letter-spacing: 1.3px;
     color: #555;
     background: #f4f4f4;
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 10px;
+    transition: max-height 0.35s ease-out, padding-top 0.35s ease-out, padding-bottom 0.35s ease-out;
 }
 
 /* End About me Section */
@@ -470,8 +469,13 @@ a.selected-item:before, .side-menu a:hover:before {
 	background-size: cover;
 	position: relative;
 }
+.fun-facts .container {
+	position: relative;
+	z-index: 1;
+}
 .fun-facts .fact {
-	color: #d2d2d2;
+	color: #f0f0f0;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
 	text-transform: capitalize;
 	letter-spacing: 1.2px;
 	margin-bottom: 40px;
@@ -483,15 +487,26 @@ a.selected-item:before, .side-menu a:hover:before {
 	display: inline-block;
 	margin-bottom: -20px;
 	line-height: 1;
+	color: #fff;
 }
 .fun-facts .fact p {
 	font-size: 4.5rem;
 	min-height: 102px;
-	color: #d2d2d2;
+	color: #fff;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
 	-webkit-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
 }
-.fun-facts .fact:hover, .fun-facts .fact:hover p {color: #fff;}
+.fun-facts .fact span {
+	color: #eaeaea;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+}
+.fun-facts .fact:hover,
+.fun-facts .fact:hover p,
+.fun-facts .fact:hover span {
+	color: #fff;
+	text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+}
 /* End Fun Facts Section */
 
 
@@ -746,12 +761,16 @@ a.selected-item:before, .side-menu a:hover:before {
     margin-top: 56px;
     margin-left: 8px;
 }
-.experiences .timeline .timeline-block .icon {
-    padding: 12px;
+.experiences .timeline .timeline-block .brand.icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
 }
-.experiences .timeline .timeline-block .icon i {
+.experiences .timeline .timeline-block .brand.icon i {
 	color: black;
 	font-size: 3rem;
+	line-height: 1;
 }
 .experiences .timeline .timeline-block .content {
 	width: 44%;
@@ -988,6 +1007,28 @@ a.selected-item:before, .side-menu a:hover:before {
 }
 
 
+/* Certificate carousel (replaces Owl Carousel) */
+.carousel {
+	overflow: hidden;
+}
+.carousel-track {
+	display: flex;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	gap: 10px;
+	padding: 10px 0;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+.carousel-track::-webkit-scrollbar {
+	display: none;
+}
+.carousel-slide {
+	scroll-snap-align: center;
+	flex: 0 0 auto;
+}
+
 .certificates {
     margin-top: 40px;
 }
@@ -1030,17 +1071,43 @@ a.selected-item:before, .side-menu a:hover:before {
 	line-height: 2;
 }
 .white-popup p.cat {text-align: center; padding-left: 0;}
-.mfp-close, button.mfp-close, button.mfp-arrow {
-	background: #ddd;
-	-webkit-transition: all 0.3s cubic-bezier(0.68, -0.07, 0.25, 0.93);
-	-moz-transition: all 0.3s cubic-bezier(0.68, -0.07, 0.25, 0.93);
-	-ms-transition: all 0.3s cubic-bezier(0.68, -0.07, 0.25, 0.93);
-	-o-transition: all 0.3s cubic-bezier(0.68, -0.07, 0.25, 0.93);
-    transition: all 0.3s cubic-bezier(0.68, -0.07, 0.25, 0.93);
+/* Popup dialog (replaces Magnific Popup) */
+.popup-dialog {
+	max-width: 700px;
+	width: calc(100% - 40px);
+	padding: 0;
+	border: none;
+	border-radius: 4px;
+	background: transparent;
 }
-.mfp-close:hover {
+.popup-dialog::backdrop {
+	background: rgba(11, 11, 11, 0.8);
+}
+.popup-dialog-inner {
+	position: relative;
+	background: #fff;
+}
+.popup-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 44px;
+	height: 44px;
+	background: #ddd;
+	border: none;
+	font-size: 28px;
+	line-height: 44px;
+	color: #333;
+	cursor: pointer;
+	z-index: 1;
+	transition: all 0.3s cubic-bezier(0.68, -0.07, 0.25, 0.93);
+}
+.popup-close:hover {
 	color: #fff;
 	background: #222;
+}
+.popup-content-hidden {
+	display: none;
 }
 /* End  Portfolio section */
 
