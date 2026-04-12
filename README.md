@@ -9,21 +9,27 @@ This is my personal portfolio website, using vanilla HTML/JS/CSS.
 Install dependencies:
 
 ```bash
-make install
+npm install
 ```
 
-Run it with autoreload using:
+Run the dev server (Vite):
 
 ```bash
-make run
+npm run dev
 ```
 
-Then the app should be available at <http://localhost:8080>
+Then the app should be available at <http://localhost:5173>
+
+## Lint
+
+```bash
+npm run lint
+```
 
 ## Running tests
 
 Validate URLs and image formats using:
 
 ```bash
-make test
+npm test
 ```
