@@ -848,22 +848,22 @@ a.selected-item:before, .side-menu a:hover:before {
 	background-size: cover;
 	position: relative;
 }
-.quote .qoute-wrapper {
+.quote .quote-wrapper {
 	text-align: center;
 	color: #fff;
 	position: relative;
 }
-.quote .qoute-wrapper p {
+.quote .quote-wrapper p {
 	font-size: 2.2rem;
 	width: 80%;
 	margin: 0 auto;
 	letter-spacing: 2px;
 	color: #fff;
 }
-.quote .qoute-wrapper p.words .quote-mark {font-size: 3rem;}
-.quote .qoute-wrapper p.words .quote-mark.open {margin-right: 10px;}
-.quote .qoute-wrapper p.words .quote-mark.end {margin-left: 10px;}
-.quote .qoute-wrapper p.author {
+.quote .quote-wrapper p.words .quote-mark {font-size: 3rem;}
+.quote .quote-wrapper p.words .quote-mark.open {margin-right: 10px;}
+.quote .quote-wrapper p.words .quote-mark.end {margin-left: 10px;}
+.quote .quote-wrapper p.author {
     font-size: 1rem;
     color: #ddd;
     margin-top: 30px;

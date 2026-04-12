@@ -1,19 +1,15 @@
-import fs from 'fs';
-// eslint-disable-next-line import/no-unresolved
+import { readFile } from 'fs/promises';
 import Crawler from 'crawler';
 
-function loadPage(callback) {
-  fs.readFile('index.html', 'utf8', (err, page) => {
-    if (err) throw err;
+export default async function loadPage() {
+  const page = await readFile('index.html', 'utf8');
+  return new Promise((resolve, reject) => {
     new Crawler().queue([{
       html: page,
       callback(error, res) {
-        // eslint-disable-next-line no-console
-        if (error) console.log(error);
-        callback(page, res.$);
+        if (error) return reject(error);
+        return resolve({ page, $: res.$ });
       },
     }]);
   });
 }
-
-export default loadPage;
