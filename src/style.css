@@ -475,6 +475,7 @@ a.selected-item:before, .side-menu a:hover:before {
 }
 .fun-facts .fact {
 	color: #f0f0f0;
+	text-align: center;
 	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
 	text-transform: capitalize;
 	letter-spacing: 1.2px;
@@ -493,6 +494,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	font-size: 4.5rem;
 	min-height: 102px;
 	color: #fff;
+	text-align: center;
 	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
 	-webkit-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
@@ -568,138 +570,130 @@ a.selected-item:before, .side-menu a:hover:before {
 }
 .technical-skills .heading-line {background: #fff;}
 .technical-skills .skills-wrapper {margin-top: 40px;}
-.technical-skills .skill {margin-bottom: 40px;}
-.technical-skills .skill .chart {
-	position: relative;
-	display: inline-block;
-	min-height: 155px;
+.technical-skills hr {
+	border-color: rgba(255,255,255,0.15);
+	margin: 20px 0 40px;
+}
+
+/* Skill cards */
+.skill-card {
+	background: rgba(255,255,255,0.07);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border: 1px solid rgba(255,255,255,0.12);
+	border-radius: 16px;
+	padding: 32px 24px;
+	margin-bottom: 30px;
+	text-align: center;
+	transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+	opacity: 0;
+	transform: translateY(24px);
+}
+.skill-card.visible {
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s;
+}
+.skill-card:hover {
+	transform: translateY(-4px);
+	border-color: rgba(85,170,238,0.5);
+	box-shadow: 0 8px 32px rgba(85,170,238,0.15);
+}
+.skill-card-icon {
+	font-size: 2.4rem;
 	color: #5ae;
-	font-size: 16px;
-	font-weight: 400;
-	text-transform: uppercase;
+	display: block;
+	margin-bottom: 12px;
 }
-.technical-skills .skill .chart > span {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
+.skill-card h3 {
+	color: #eee;
+	text-transform: uppercase;
+	font-size: 1.1rem;
+	letter-spacing: 2px;
+	margin-bottom: 18px;
+}
+.tech-chips {
 	display: flex;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	-ms-flex-pack: center;
+	flex-wrap: wrap;
+	gap: 8px;
 	justify-content: center;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top:  0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	font-size: 2.1rem;
 }
-.technical-skills .skill h3 {
-	margin-top: 10px;
-	text-transform: uppercase;
-	color: #eee;
-}
-.technical-skills .skill h4 {
-	margin-top: 10px;
-	color: #eee;
-}
-.technical-skills .other-skills {margin-top: 40px;}
-.technical-skills .bar_group {
-	text-align: left;
-	position: relative;
-	margin-bottom: 45px;
-}
-.technical-skills .bar_group__bar.thick {
-	width: 0%;
-	height: 10px;
-	border-radius: 6px;
-	background: #afa !important;
-	margin-bottom: 10px;
-	-webkit-transition: width 1s;
-	transition: width 1s;
-}
-.technical-skills .bar_group__bar.red {
-	background: #faa !important;
-}
-.technical-skills .bar_group__bar.thick::before {
-	display: block;
-	content: '';
-	position: absolute;
-	z-index: 0;
-	opacity: 0.1;
-	width: 95%;
-	height: 10px;
-	border-radius: 6px;
-	background: #fff;
-}
-.technical-skills .b_label, .technical-skills .bar_label_min, .technical-skills .bar_label_max, .technical-skills .b_tooltip span {
-	color: #fff;
-	font-size: 15px;
-}
-.technical-skills .b_label {
+.tech-chip {
 	display: inline-block;
-	border: 1px solid #fff;
-	padding: 10px 20px;
-	margin-bottom: 10px;
+	background: rgba(85,170,238,0.15);
+	color: #cde;
+	border: 1px solid rgba(85,170,238,0.25);
+	border-radius: 20px;
+	padding: 6px 14px;
+	font-size: 0.82rem;
+	letter-spacing: 0.5px;
+	white-space: nowrap;
+	transition: background 0.2s, border-color 0.2s;
+}
+.tech-chip:hover {
+	background: rgba(85,170,238,0.3);
+	border-color: rgba(85,170,238,0.5);
+}
+.tech-chip .years {
+	font-size: 0.7rem;
+	color: rgba(255,255,255,0.45);
+	margin-left: 2px;
+}
+
+/* Language proficiency */
+.language-section {
+	margin-top: 40px;
+}
+.language-grid {
+	max-width: 560px;
+	margin: 40px auto 0;
+}
+.lang-row {
+	display: flex;
+	align-items: center;
+	padding: 14px 0;
+	border-bottom: 1px solid rgba(255,255,255,0.08);
+	opacity: 0;
+	transform: translateX(-16px);
+}
+.lang-row.visible {
+	opacity: 1;
+	transform: translateX(0);
+	transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.lang-row:last-child {
+	border-bottom: none;
+}
+.lang-name {
+	color: #eee;
+	font-size: 1rem;
+	font-weight: 400;
+	width: 130px;
+	text-align: left;
+	letter-spacing: 0.5px;
+}
+.lang-level {
+	color: rgba(255,255,255,0.45);
+	font-size: 0.82rem;
 	text-transform: uppercase;
-	letter-spacing: 1.3px;
-	-webkit-transition: all 0.3s;
-	transition: all 0.3s;
+	letter-spacing: 1.5px;
+	width: 100px;
+	text-align: left;
 }
-.technical-skills .b_label:hover {
-	background: #fff;
-	color: #111;
+.proficiency-dots {
+	display: flex;
+	gap: 6px;
+	margin-left: auto;
 }
-.technical-skills .bar_label_max,
-.technical-skills .bar_label_min {
-	position: absolute;
-	bottom: -10px;
+.proficiency-dots .dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: rgba(255,255,255,0.12);
+	transition: background 0.4s ease;
 }
-.technical-skills .bar_label_max {right: 20px;}
-.technical-skills .bar_label_min {left: 20px;}
-.technical-skills .b_tooltip {
-	-webkit-transition: all 1s;
-	transition: all 1s;
-	position: relative;
-	float: left;
-	left: 100%;
-	padding: 4px 10px 7px 10px;
-	background-color: rgba(255, 255, 255, 0.91);
-	-webkit-transform: translateX(-50%) translateY(-30px);
-	-ms-transform: translateX(-50%) translateY(-30px);
-	transform: translateX(-50%) translateY(-30px);
-	border-radius: 2px;
-	line-height: 11px;
-	box-shadow: 1px 1px 1px 1px #E2D9E2;
-}
-.technical-skills .b_tooltip span {color: #000;}
-.technical-skills .b_tooltip--tri {
-	width: 0;
-	height: 0;
-	position: absolute;
-	content: '';
-	bottom: -5px;
-	left: 0;
-	right: 0;
-	margin: auto;
-	display: block;
-	border-style: solid;
-	border-width: 5px 5px 0 5px;
-	border-color: rgba(255, 255, 255, 0.81) transparent transparent transparent;
-}
-.technical-skills .bar_group .elastic {
-	background: #fff;
-	margin-bottom: 20px !important;
-	-webkit-transition-timing-function: cubic-bezier(0.5, 0.25, 0.375, 1.335);
-	transition-timing-function: cubic-bezier(0.5, 0.25, 0.375, 1.335);
-	-webkit-transition-duration: 1s;
-	transition-duration: 1s;
+.proficiency-dots .dot.filled {
+	background: #5ae;
 }
 
 /* End technical skills section */

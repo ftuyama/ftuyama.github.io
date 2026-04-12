@@ -6,6 +6,47 @@ interface GitHubUser {
   public_repos: number;
 }
 
+interface GitHubRepo {
+  stargazers_count: number;
+  forks_count: number;
+  size: number;
+}
+
+interface FunFactStats {
+  loc: number;
+  repos: number;
+  watchers: number;
+  stars: number;
+}
+
+const FUN_FACT_ANIM_MS = 2200;
+const FUN_FACT_FALLBACK: FunFactStats = {
+  loc: 69000,
+  repos: 66,
+  watchers: 2100,
+  stars: 87,
+};
+/** Maps each stat to its `#number_*` element id. */
+const FUN_FACT_SLOTS: { id: string; key: keyof FunFactStats }[] = [
+  { id: 'number_1', key: 'loc' },
+  { id: 'number_2', key: 'repos' },
+  { id: 'number_3', key: 'watchers' },
+  { id: 'number_4', key: 'stars' },
+];
+
+function buildFunFactStats(user: GitHubUser, repos: GitHubRepo[]): FunFactStats {
+  const totalStars = repos.reduce((s, r) => s + r.stargazers_count, 0);
+  const totalForks = repos.reduce((s, r) => s + r.forks_count, 0);
+  const totalSizeKB = repos.reduce((s, r) => s + r.size, 0);
+  const estimatedLOC = Math.round((totalSizeKB * 1024) / 50);
+  return {
+    loc: estimatedLOC,
+    repos: user.public_repos,
+    watchers: totalForks * 100,
+    stars: totalStars,
+  };
+}
+
 export function initApp(): void {
   initLoadingScreen();
   initDynamicText();
@@ -271,37 +312,37 @@ function initFunFacts(): void {
   if (!factsSection) return;
 
   let animated = false;
-  const githubApiUrl = 'https://api.github.com/users/ftuyama';
-  const localApiUrl = '/public/cache/ftuyama.json';
-  const apiUrl =
-    location.hostname === 'localhost' ? localApiUrl : githubApiUrl;
+  const isLocal = location.hostname === 'localhost';
+  const userApiUrl = isLocal
+    ? '/public/cache/ftuyama.json'
+    : 'https://api.github.com/users/ftuyama';
+  const reposApiUrl = isLocal
+    ? '/public/cache/repos.json'
+    : 'https://api.github.com/users/ftuyama/repos?per_page=100';
 
-  const runAnimation = (repoCount: number) => {
+  const runAnimation = (stats: FunFactStats) => {
     observeElement(
       factsSection,
       () => {
         if (animated) return;
         animated = true;
-        animateNumber(document.getElementById('number_1')!, 68530, 2200);
-        animateNumber(document.getElementById('number_2')!, repoCount, 2200);
-        animateNumber(
-          document.getElementById('number_3')!,
-          Math.round(+new Date() / 100000000),
-          2200,
-        );
-        animateNumber(document.getElementById('number_4')!, 10000, 2200);
+        for (const { id, key } of FUN_FACT_SLOTS) {
+          const el = document.getElementById(id);
+          if (el) animateNumber(el, stats[key], FUN_FACT_ANIM_MS);
+        }
       },
       -150,
     );
   };
 
-  fetch(apiUrl)
-    .then((res) => res.json())
-    .then((data: GitHubUser) => runAnimation(data.public_repos))
-    .catch(() => runAnimation(30));
+  Promise.all([
+    fetch(userApiUrl).then((r) => r.json()) as Promise<GitHubUser>,
+    fetch(reposApiUrl).then((r) => r.json()) as Promise<GitHubRepo[]>,
+  ])
+    .then(([user, repos]) => runAnimation(buildFunFactStats(user, repos)))
+    .catch(() => runAnimation(FUN_FACT_FALLBACK));
 }
 
-// Replaces jquery.appear + jquery.easyPieChart + jquery.animateNumber
 function initSkills(): void {
   const skillsSection = document.getElementById('skills');
   if (!skillsSection) return;
@@ -314,14 +355,21 @@ function initSkills(): void {
       if (animated) return;
       animated = true;
 
-      document
-        .querySelectorAll<HTMLElement>('.chart')
-        .forEach((el) => createPieChart(el));
+      skillsSection.querySelectorAll<HTMLElement>('.skill-card').forEach((card, i) => {
+        setTimeout(() => card.classList.add('visible'), i * 120);
+      });
 
-      animateNumber(document.getElementById('chart_num_1')!, 88, 1500);
-      animateNumber(document.getElementById('chart_num_2')!, 63, 1500);
-      animateNumber(document.getElementById('chart_num_3')!, 73, 1500);
-      animateNumber(document.getElementById('chart_num_4')!, 45, 1500);
+      skillsSection.querySelectorAll<HTMLElement>('.lang-row').forEach((row, i) => {
+        const level = parseInt(row.dataset.level ?? '0', 10);
+        setTimeout(() => {
+          row.classList.add('visible');
+          row.querySelectorAll('.dot').forEach((dot, di) => {
+            if (di < level) {
+              setTimeout(() => dot.classList.add('filled'), di * 80);
+            }
+          });
+        }, 400 + i * 100);
+      });
     },
     -150,
   );
@@ -404,58 +452,22 @@ function initPopup(): void {
 
 // --- Utilities ---
 
+const formatCount = (n: number): string =>
+  new Intl.NumberFormat('en-US', {
+    maximumFractionDigits: 0,
+  }).format(n);
+
 function animateNumber(el: HTMLElement, target: number, duration: number): void {
   const startTime = performance.now();
 
   function update(now: number) {
     const progress = Math.min((now - startTime) / duration, 1);
-    el.textContent = String(Math.round(progress * target));
+    const value = Math.round(progress * target);
+    el.textContent = formatCount(value);
     if (progress < 1) requestAnimationFrame(update);
   }
 
   requestAnimationFrame(update);
-}
-
-function createPieChart(el: HTMLElement): void {
-  const percent = parseInt(el.dataset.percent ?? '0', 10);
-  const size = 150;
-  const lineWidth = 10;
-
-  const canvas = document.createElement('canvas');
-  canvas.width = size;
-  canvas.height = size;
-  canvas.style.position = 'absolute';
-  canvas.style.top = '0';
-  canvas.style.left = '50%';
-  canvas.style.transform = 'translateX(-50%)';
-  el.insertBefore(canvas, el.firstChild);
-
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-
-  const center = size / 2;
-  const radius = (size - lineWidth) / 2;
-  const startAngle = -Math.PI / 2;
-  const targetAngle = startAngle + (percent / 100) * 2 * Math.PI;
-  const duration = 1500;
-  const startTime = performance.now();
-
-  function draw(now: number) {
-    const progress = Math.min((now - startTime) / duration, 1);
-    const currentAngle = startAngle + progress * (targetAngle - startAngle);
-
-    ctx!.clearRect(0, 0, size, size);
-    ctx!.beginPath();
-    ctx!.arc(center, center, radius, startAngle, currentAngle);
-    ctx!.strokeStyle = '#5ae';
-    ctx!.lineWidth = lineWidth;
-    ctx!.lineCap = 'round';
-    ctx!.stroke();
-
-    if (progress < 1) requestAnimationFrame(draw);
-  }
-
-  requestAnimationFrame(draw);
 }
 
 function observeElement(
