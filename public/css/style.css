@@ -81,9 +81,6 @@ button, button:focus, a, a:hover, a:focus, input, input:active, input:focus, tex
 	right: 0;
 	background: rgba(0, 0, 0, 0.75);
 }
-.service i {
-    padding-top: 19px;
-}
 .pattern {
 	background: url('/public/images/noise.webp') repeat center;
 	position: absolute;
@@ -431,10 +428,11 @@ a.selected-item:before, .side-menu a:hover:before {
 .about-me .why-me .accordion .acc-item .acc-title i {
 	position: absolute;
 	right: 20px;
+	top: 50%;
 	color: #2F3136;
-	-webkit-transform: rotate(180deg);
-	-ms-transform: rotate(180deg);
-	transform: rotate(180deg);
+	-webkit-transform: translateY(-50%) rotate(180deg);
+	-ms-transform: translateY(-50%) rotate(180deg);
+	transform: translateY(-50%) rotate(180deg);
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
@@ -446,9 +444,9 @@ a.selected-item:before, .side-menu a:hover:before {
 	border-color: #2F3136;
 }
 .about-me .why-me .accordion .acc-item .acc-title.active i {
-	-webkit-transform: rotate(0deg);
-	-ms-transform: rotate(0deg);
-	transform: rotate(0deg);
+	-webkit-transform: translateY(-50%) rotate(0deg);
+	-ms-transform: translateY(-50%) rotate(0deg);
+	transform: translateY(-50%) rotate(0deg);
 	color: #fff;
 }
 .about-me .why-me .accordion .acc-item .acc-content {
@@ -509,10 +507,13 @@ a.selected-item:before, .side-menu a:hover:before {
 	font-size: 3.5rem;
 	border: 1px solid #ddd;
 	border-radius: 50%;
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	height: 95px;
 	width: 95px;
-	line-height: 95px;
+	padding: 0;
+	line-height: 1;
 	color: #222;
 	-webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -1367,7 +1368,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	transform: translateY(70px);
 }
 .icon-wrapper .icon.fb:after {content: "\f231";}
-.icon-wrapper .icon.tw:after {content: "\f243";}
+.icon-wrapper .icon.kofi:after {content: "\f272";}
 .icon-wrapper .icon.gh:after {content: "\f233";}
 .icon-wrapper .icon.gp:after {content: "\f235";}
 .icon-wrapper .icon.li:after {content: "\f239";}
@@ -1375,7 +1376,7 @@ a.selected-item:before, .side-menu a:hover:before {
 .icon-wrapper .icon.yt:after {content: "\f24c";}
 .icon-wrapper .icon.pin:after {content: "\f2b1";}
 .icon-wrapper .icon.fb:hover {background: #3b5998;}
-.icon-wrapper .icon.tw:hover {background: #55acee;}
+.icon-wrapper .icon.kofi:hover {background: #ff5e5b;}
 .icon-wrapper .icon.gh:hover {background: #333333;}
 .icon-wrapper .icon.gp:hover {background: #dc4e41;}
 .icon-wrapper .icon.li:hover {background: #0077b5;}
@@ -1415,13 +1416,16 @@ a.selected-item:before, .side-menu a:hover:before {
 	right: -60px;
 	width: 50px;
 	height: 50px;
-	line-height: 45px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
 	font-size: 2rem;
 	border: 2px solid #ededed;
 	cursor: pointer;
 	color:  #ededed;
 	background: #111;
-    padding-top: 6px;
+	padding: 0;
 	opacity: 0.7;
 	-webkit-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
@@ -1440,34 +1444,6 @@ a.selected-item:before, .side-menu a:hover:before {
 .back-to-top:hover {opacity: 1;}
 
 /* End  Back to top button */
-
-
-/* ---------------------------------------
-			Star  Scroll Percentage
------------------------------------------ */
-
-#scroll {
-	position: fixed;
-    right: 15px;
-    z-index: 500;
-    padding: 3px 8px;
-    background-color: #111;
-    color: #fff;
-    border-radius: 3px;
-}
-#scroll::after {
-    content: " ";
-    position: absolute;
-    top: 50%;
-    right: -8px;
-    height: 0;
-    width: 0;
-    margin-top: -4px;
-    border: 4px solid transparent;
-    border-left-color: #111;
-}
-
-/* End  Scroll percentage */
 
 
 /* ---------------------------------------

@@ -1,7 +1,7 @@
 import assert from 'assert';
 import loadPage from './html_helper.js';
 
-const SKIP_HREF_PATTERN = /.*(resume|maximus|buson|teaminternational|ieeexplore|google|infinitusgo|linkedin|vigil|twitter|researchgate|stackoverflow|#).*/;
+const SKIP_HREF_PATTERN = /.*(resume|maximus|buson|teaminternational|ieeexplore|google|infinitusgo|linkedin|vigil|twitter|researchgate|stackoverflow|ko-fi\.com|#).*/;
 const SKIP_BLANK_PATTERN = /.*(resume|infinitusgo|google|twitter|#).*/;
 
 describe('Page', () => {

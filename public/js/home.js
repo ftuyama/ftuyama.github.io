@@ -90,7 +90,6 @@ $(document).ready(function () {
 
     // Consolidated scroll state
     const backToTop = $(".back-to-top");
-    let scrollTimer = null;
     let lastScrollTop = 0;
     let ticking = false;
     const delta = 5;
@@ -114,26 +113,6 @@ $(document).ready(function () {
         lastScrollTop = scrollTop;
     }
 
-    function handleScrollPercentage(scrollTop) {
-        const viewportHeight = $(window).height();
-        const docHeight = $(document).height();
-        const scrollbarHeight = viewportHeight / docHeight * viewportHeight;
-        const progress = scrollTop / (docHeight - viewportHeight);
-        const distance = progress * (viewportHeight - scrollbarHeight) + scrollbarHeight / 2 - $("#scroll").height() / 2;
-
-        $("#scroll")
-            .css("top", distance)
-            .text(` (${Math.round(progress * 100)}%)`)
-            .fadeIn(100);
-
-        if (scrollTimer !== null) {
-            clearTimeout(scrollTimer);
-        }
-        scrollTimer = setTimeout(function () {
-            $("#scroll").fadeOut();
-        }, 800);
-    }
-
     $(window).on('scroll', function () {
         if (ticking) return;
         ticking = true;
@@ -154,7 +133,6 @@ $(document).ready(function () {
                 backToTop.removeClass("show-button");
             }
 
-            handleScrollPercentage(scrollTop);
             handleNavbarVisibility(scrollTop);
 
             ticking = false;
