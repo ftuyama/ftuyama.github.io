@@ -164,7 +164,6 @@ function initMenu(): void {
 // Replaces Owl Carousel with CSS scroll-snap carousel
 async function initCertificates(): Promise<void> {
   try {
-    const isLocalhost = location.hostname === 'localhost';
     // Prefer static cache for reliability; fallback to GitHub API if unavailable.
     const certsCandidates = [
       '/public/cache/certificates.json',
