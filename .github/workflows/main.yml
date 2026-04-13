@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: "pages"
@@ -44,11 +46,9 @@ jobs:
     if: github.ref == 'refs/heads/master'
     needs: test
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     environment:
       name: github-pages
-      url: https://ftuyama.github.io
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
     - uses: actions/checkout@v6
@@ -63,13 +63,14 @@ jobs:
     - name: Build
       run: npm run build
 
-    # Pushes the Vite output to orphan branch `gh-pages`. Set GitHub Pages
-    # "Build and deployment" source to branch `gh-pages` / folder `/` (not
-    # `master`, which serves the dev index.html with /src/main.ts).
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        branch: gh-pages
-        folder: dist
-        clean: true
-        single-commit: true
+        path: 'dist'
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
