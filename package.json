@@ -8,12 +8,12 @@
   },
   "devDependencies": {
     "crawler": "^2.0.2",
-    "eslint": "^9.39.4",
-    "globals": "^16.2.0",
+    "eslint": "^10.2.0",
+    "globals": "^17.5.0",
     "mocha": "^11.7.5",
     "typescript": "^6.0.2",
     "typescript-eslint": "^8.58.1",
-    "vite": "^6.4.2"
+    "vite": "^8.0.8"
   },
   "scripts": {
     "dev": "vite",
@@ -25,6 +25,6 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.8",
-    "gsap": "^3.14.2"
+    "gsap": "^3.15.0"
   }
 }

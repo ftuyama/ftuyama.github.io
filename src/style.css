@@ -663,7 +663,10 @@ a.selected-item:before, .side-menu a:hover:before {
 	position: relative;
 }
 .technical-skills p.title {
-	color: var(--text-secondary);
+	color: var(--text-primary);
+	font-weight: 600;
+	letter-spacing: 0.6px;
+	text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95), 0 0 18px rgba(0, 0, 0, 0.65);
 	position: relative;
 }
 .technical-skills .heading-line { background: var(--accent); }
@@ -736,6 +739,80 @@ a.selected-item:before, .side-menu a:hover:before {
 	font-size: 0.65rem;
 	color: rgba(255, 255, 255, 0.75);
 	margin-left: 2px;
+}
+
+/* Languages and tools carousel */
+.tools-carousel-section {
+	margin-top: 12px;
+}
+.tools-carousel-section p.title {
+	margin-bottom: 20px;
+}
+.tools-carousel-shell {
+	position: relative;
+	overflow: hidden;
+	mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+	-webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+	opacity: 0;
+	transform: translateY(18px);
+}
+.tools-carousel-shell.visible {
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.tools-carousel-track {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	width: max-content;
+	padding: 8px 0;
+	animation: toolsCarouselScroll 36s linear infinite;
+}
+.tools-carousel-shell:hover .tools-carousel-track {
+	animation-play-state: paused;
+}
+.tool-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-width: 110px;
+	padding: 14px 12px;
+	border-radius: var(--radius-md);
+	border: 1px solid var(--border-medium);
+	background: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.tool-item i {
+	font-size: 2rem;
+	line-height: 1;
+	color: #d9e7ff;
+}
+.tool-item span {
+	margin-top: 8px;
+	font-size: 0.78rem;
+	letter-spacing: 0.7px;
+	color: var(--text-secondary);
+}
+.tool-item:hover {
+	border-color: var(--border-accent);
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-accent);
+}
+.tool-item:focus-within {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+@keyframes toolsCarouselScroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
 }
 
 /* Language proficiency */
@@ -1731,6 +1808,17 @@ a.selected-item:before, .side-menu a:hover:before {
 	.about-me { text-align: center; }
 
 	.testmonials .opinion p { width: 100%; }
+
+	.tools-carousel-shell {
+		mask-image: none;
+		-webkit-mask-image: none;
+	}
+	.tools-carousel-track {
+		animation-duration: 28s;
+	}
+	.tool-item {
+		min-width: 100px;
+	}
 }
 
 /* Reduced motion preference */
@@ -1740,6 +1828,14 @@ a.selected-item:before, .side-menu a:hover:before {
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;
 		scroll-behavior: auto !important;
+	}
+	.tools-carousel-shell {
+		overflow-x: auto;
+		mask-image: none;
+		-webkit-mask-image: none;
+	}
+	.tools-carousel-track {
+		animation: none;
 	}
 }
 

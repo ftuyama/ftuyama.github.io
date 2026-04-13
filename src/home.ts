@@ -405,6 +405,11 @@ function initSkills(): void {
         setTimeout(() => card.classList.add('visible'), i * 120);
       });
 
+      const toolsCarousel = skillsSection.querySelector<HTMLElement>('.tools-carousel-shell');
+      if (toolsCarousel) {
+        setTimeout(() => toolsCarousel.classList.add('visible'), 260);
+      }
+
       skillsSection.querySelectorAll<HTMLElement>('.lang-row').forEach((row, i) => {
         const level = parseInt(row.dataset.level ?? '0', 10);
         setTimeout(() => {
