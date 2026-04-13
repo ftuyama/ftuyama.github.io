@@ -20,6 +20,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "lint": "eslint test src",
+    "capture-header": "node scripts/capture-header.mjs",
     "test": "mocha",
     "typecheck": "tsc --noEmit"
   },
