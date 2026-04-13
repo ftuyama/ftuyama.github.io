@@ -143,15 +143,26 @@ function initMenu(): void {
 
 // Replaces Owl Carousel with CSS scroll-snap carousel
 async function initCertificates(): Promise<void> {
-  const githubCertsUrl =
-    'https://api.github.com/repos/ftuyama/ftuyama.github.io/contents/public/certificates';
-  const localCertsUrl = '/public/cache/certificates.json';
-  const certsUrl =
-    location.hostname === 'localhost' ? localCertsUrl : githubCertsUrl;
-
   try {
-    const res = await fetch(certsUrl);
-    const certificates: Certificate[] = await res.json();
+    // Prefer static cache for reliability; fallback to GitHub API if unavailable.
+    const certsCandidates = [
+      '/public/cache/certificates.json',
+      'https://api.github.com/repos/ftuyama/ftuyama.github.io/contents/static/public/certificates',
+    ];
+
+    let certificates: Certificate[] | null = null;
+    for (const url of certsCandidates) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) continue;
+        certificates = (await res.json()) as Certificate[];
+        break;
+      } catch {
+        // Ignore and try next source.
+      }
+    }
+    if (!certificates?.length) return;
+
     const container = document.getElementById('certificates');
     if (!container) return;
 
@@ -159,7 +170,7 @@ async function initCertificates(): Promise<void> {
     track.className = 'carousel-track';
 
     for (const cert of certificates) {
-      const certificateUrl = `https://ftuyama.github.io/public/certificates/${cert.name}`;
+      const certificateUrl = `/public/certificates/${encodeURIComponent(cert.name)}`;
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
       slide.innerHTML = `

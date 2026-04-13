@@ -8,3 +8,4 @@ User-agent: *
 Disallow: /public/certificates/
 
 Sitemap: https://ftuyama.github.io/sitemap.xml
+LLM-Text: https://ftuyama.github.io/llms.txt

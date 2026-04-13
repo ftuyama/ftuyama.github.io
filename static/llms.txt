@@ -1,0 +1,17 @@
+Project: ftuyama.github.io
+Description: Personal portfolio website for Felipe Tuyama, built with vanilla HTML, CSS, and TypeScript/JavaScript.
+Owner: Felipe Tuyama
+Website: https://ftuyama.github.io/
+
+Primary content:
+- Home: https://ftuyama.github.io/
+- Projects and repositories: https://ftuyama.github.io/#projects
+- Certificates: https://ftuyama.github.io/#certificates
+- Contact: https://ftuyama.github.io/#contact
+
+Structured data sources:
+- Repositories cache: /static/public/cache/repos.json
+- Certificates cache: /static/public/cache/certificates.json
+- Profile cache: /static/public/cache/ftuyama.json
+
+License: See repository license and source files for terms.
