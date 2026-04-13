@@ -1,5 +1,6 @@
 interface Certificate {
   name: string;
+  path?: string;
 }
 
 interface GitHubUser {
@@ -47,19 +48,38 @@ function buildFunFactStats(user: GitHubUser, repos: GitHubRepo[]): FunFactStats 
   };
 }
 
-export function initApp(): void {
+export function initCriticalApp(): void {
   initLoadingScreen();
   initDynamicText();
-  initScrollAnimations();
   initMenu();
-  initCertificates();
   initSmoothScroll();
   initAccordion();
   initScrollHandler();
+}
+
+export function initDeferredApp(): void {
+  initScrollAnimations();
   initFunFacts();
   initSkills();
-  initPortfolioFilter();
-  initPopup();
+  initPortfolioEnhancements();
+}
+
+function initPortfolioEnhancements(): void {
+  const portfolioSection = document.getElementById('portfolio');
+  if (!portfolioSection) return;
+
+  let started = false;
+  observeElement(
+    portfolioSection,
+    () => {
+      if (started) return;
+      started = true;
+      initCertificates();
+      initPortfolioFilter();
+      initPopup();
+    },
+    0,
+  );
 }
 
 function initLoadingScreen(): void {
@@ -144,6 +164,7 @@ function initMenu(): void {
 // Replaces Owl Carousel with CSS scroll-snap carousel
 async function initCertificates(): Promise<void> {
   try {
+    const isLocalhost = location.hostname === 'localhost';
     // Prefer static cache for reliability; fallback to GitHub API if unavailable.
     const certsCandidates = [
       '/public/cache/certificates.json',
@@ -170,7 +191,7 @@ async function initCertificates(): Promise<void> {
     track.className = 'carousel-track';
 
     for (const cert of certificates) {
-      const certificateUrl = `/public/certificates/${encodeURIComponent(cert.name)}`;
+      const certificateUrl = getCertificateUrl(cert);
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
       slide.innerHTML = `
@@ -201,6 +222,21 @@ async function initCertificates(): Promise<void> {
   } catch {
     /* certificates unavailable */
   }
+}
+
+function getCertificateUrl(cert: Certificate): string {
+  const rawPath = cert.path?.trim();
+  if (rawPath) {
+    const normalized = rawPath.startsWith('/') ? rawPath.slice(1) : rawPath;
+    const encodedPath = normalized
+      .split('/')
+      .map((segment) => encodeURIComponent(segment))
+      .join('/');
+    return `/${encodedPath}`;
+  }
+
+  const fileName = encodeURIComponent(cert.name);
+  return `/public/certificates/${fileName}`;
 }
 
 function initSmoothScroll(): void {

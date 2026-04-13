@@ -30,6 +30,12 @@ class Circle {
 }
 
 export function initAnimatedHeader(): void {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const connection = (
+    navigator as Navigator & { connection?: { saveData?: boolean } }
+  ).connection;
+  if (connection?.saveData) return;
+
   const header = document.getElementById('large-header');
   const canvas = document.getElementById('demo-canvas') as HTMLCanvasElement | null;
   if (!header || !canvas) return;
@@ -39,18 +45,20 @@ export function initAnimatedHeader(): void {
 
   let width = window.innerWidth;
   let height = window.innerHeight;
+  const pointsPerAxis = width < 768 ? 8 : 16;
   const mouse = { x: width / 2, y: height / 2 };
-  let animating = true;
+  let animating = document.documentElement.scrollTop <= height;
+  let rafId = 0;
 
   header.style.height = `${height}px`;
   canvas.width = width;
   canvas.height = height;
 
   const points: Point[] = [];
-  for (let x = 0; x < width; x += width / 20) {
-    for (let y = 0; y < height; y += height / 20) {
-      const px = x + Math.random() * (width / 20);
-      const py = y + Math.random() * (height / 20);
+  for (let x = 0; x < width; x += width / pointsPerAxis) {
+    for (let y = 0; y < height; y += height / pointsPerAxis) {
+      const px = x + Math.random() * (width / pointsPerAxis);
+      const py = y + Math.random() * (height / pointsPerAxis);
       points.push({
         x: px,
         y: py,
@@ -103,6 +111,11 @@ export function initAnimatedHeader(): void {
   }
 
   function animate(): void {
+    if (!animating || document.hidden) {
+      rafId = 0;
+      return;
+    }
+
     if (animating) {
       ctx!.clearRect(0, 0, width, height);
       for (const p of points) {
@@ -124,7 +137,7 @@ export function initAnimatedHeader(): void {
         p.circle.draw(ctx!);
       }
     }
-    requestAnimationFrame(animate);
+    rafId = requestAnimationFrame(animate);
   }
 
   function drawLines(p: Point): void {
@@ -149,9 +162,17 @@ export function initAnimatedHeader(): void {
       'scroll',
       () => {
         animating = document.documentElement.scrollTop <= height;
+        if (animating && rafId === 0) {
+          animate();
+        }
       },
       { passive: true },
     );
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && animating && rafId === 0) {
+        animate();
+      }
+    });
     window.addEventListener('resize', () => {
       width = window.innerWidth;
       height = window.innerHeight;

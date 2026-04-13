@@ -35,8 +35,8 @@
 	--bg-surface: #111;
 
 	--text-primary: #f0f0f0;
-	--text-secondary: #a0a0a0;
-	--text-muted: #666;
+	--text-secondary: #bdbdbd;
+	--text-muted: #9a9a9a;
 
 	--accent: #55aaee;
 	--accent-hover: #44aacc;
@@ -164,7 +164,13 @@ button, button:focus, a, a:hover, a:focus, input, input:active, input:focus, tex
 .header .large-header {
 	position: relative;
 	width: 100%;
-	background: var(--bg-body) url('/public/images/header.webp') center center no-repeat fixed;
+	background: var(--bg-body);
+	background-image: image-set(
+		url('/public/images/header.webp') type('image/webp')
+	);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
 	overflow: hidden;
 	background-size: cover;
 	z-index: 1;
@@ -241,8 +247,9 @@ button, button:focus, a, a:hover, a:focus, input, input:active, input:focus, tex
 	bottom: 40px;
 	left: 50%;
 	cursor: pointer;
-	transform: translateX(-50%);
+	transform: translate3d(-50%, 0, 0);
 	animation: mouseMove 2s infinite;
+	will-change: transform;
 }
 .header .mouse:after {
 	position: absolute;
@@ -256,8 +263,8 @@ button, button:focus, a, a:hover, a:focus, input, input:active, input:focus, tex
 	transform: translateX(-50%);
 }
 @keyframes mouseMove {
-	0% { bottom: 40px; }
-	50% { bottom: 24px; }
+	0%, 100% { transform: translate3d(-50%, 0, 0); }
+	50% { transform: translate3d(-50%, -16px, 0); }
 }
 
 /* End Header Section */
@@ -727,7 +734,7 @@ a.selected-item:before, .side-menu a:hover:before {
 }
 .tech-chip .years {
 	font-size: 0.65rem;
-	color: rgba(255, 255, 255, 0.4);
+	color: rgba(255, 255, 255, 0.75);
 	margin-left: 2px;
 }
 
@@ -764,7 +771,7 @@ a.selected-item:before, .side-menu a:hover:before {
 	letter-spacing: 0.5px;
 }
 .lang-level {
-	color: rgba(255, 255, 255, 0.4);
+	color: rgba(255, 255, 255, 0.75);
 	font-size: 0.82rem;
 	text-transform: uppercase;
 	letter-spacing: 1.5px;
@@ -1697,6 +1704,16 @@ a.selected-item:before, .side-menu a:hover:before {
 
 
 @media (max-width: 767px) {
+	.header .large-header,
+	.fun-facts,
+	.technical-skills,
+	.quote {
+		background-attachment: scroll;
+	}
+	.header .large-header {
+		background-image: linear-gradient(180deg, rgba(15, 15, 15, 0.95) 0%, rgba(15, 15, 15, 1) 100%);
+	}
+
 	.experiences .timeline .timeline-block .content {
 		width: 100%;
 		margin-top: 88px;
