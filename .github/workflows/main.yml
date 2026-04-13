@@ -30,6 +30,9 @@ jobs:
 
     - run: npm install
 
+    - name: Install Playwright Chromium
+      run: npx playwright install chromium --with-deps
+
     - name: Run eslint
       run: npm run lint
 

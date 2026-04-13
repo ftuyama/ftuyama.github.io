@@ -42,6 +42,12 @@
 	--accent-hover: #44aacc;
 	--accent-glow: rgba(85, 170, 238, 0.25);
 
+	/* Claude logo palette (warm terracotta) */
+	--claude-brand: #da7756;
+	--claude-brand-glow: rgba(218, 119, 86, 0.38);
+	--claude-brand-soft: rgba(218, 119, 86, 0.12);
+	--claude-brand-border: rgba(218, 119, 86, 0.38);
+
 	--border-subtle: rgba(255, 255, 255, 0.08);
 	--border-medium: rgba(255, 255, 255, 0.12);
 	--border-accent: rgba(85, 170, 238, 0.3);
@@ -201,11 +207,107 @@ button, button:focus, a, a:hover, a:focus, input, input:active, input:focus, tex
 	padding: 0.6rem 2.5rem;
 	letter-spacing: 4px;
 }
+.header .content .hero-skills {
+	text-transform: none;
+	margin: 1.75rem auto 0;
+	padding: 0 1rem;
+	max-width: min(36rem, 100%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.75rem;
+}
+.header .content .hero-skills-eyebrow {
+	font-size: 0.65rem;
+	font-weight: 600;
+	letter-spacing: 0.32em;
+	text-transform: uppercase;
+	color: var(--accent);
+	margin: 0;
+	opacity: 0.92;
+}
+.header .content .hero-skills-eyebrow::after {
+	content: '';
+	display: block;
+	width: 2.25rem;
+	height: 2px;
+	margin: 0.55rem auto 0;
+	border-radius: 1px;
+	background: linear-gradient(90deg, transparent, var(--accent), transparent);
+	opacity: 0.55;
+}
+.header .content .hero-skills-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem 0.6rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.header .content .hero-skills-list li {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.8125rem;
+	font-weight: 500;
+	letter-spacing: 0.06em;
+	line-height: 1.25;
+	color: rgba(255, 255, 255, 0.93);
+	padding: 0.45rem 1rem;
+	border-radius: var(--radius-pill);
+	background: rgba(255, 255, 255, 0.055);
+	border: 1px solid var(--border-medium);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+	transition:
+		border-color var(--transition-fast),
+		background var(--transition-fast),
+		box-shadow var(--transition-fast),
+		transform var(--transition-fast);
+}
+.header .content .hero-skills-list .hero-skill-icon {
+	font-size: 1.125rem;
+	line-height: 1;
+	flex-shrink: 0;
+	vertical-align: middle;
+}
+.header .content .hero-skills-list .hero-skill-icon--ai {
+	font-size: 1.05rem;
+	color: var(--claude-brand);
+	filter: drop-shadow(0 0 6px var(--claude-brand-glow));
+}
+.header .content .hero-skills-list svg.hero-skill-icon--ai {
+	width: 1.05rem;
+	height: 1.05rem;
+	fill: currentColor;
+	display: block;
+}
+.header .content .hero-skills-list li:hover {
+	border-color: var(--border-accent);
+	background: rgba(85, 170, 238, 0.09);
+	box-shadow: var(--shadow-sm), 0 0 20px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+	transform: translateY(-2px);
+}
+.header .content .hero-skills-list li.hero-skills-list-item--claude:hover {
+	border-color: var(--claude-brand-border);
+	background: var(--claude-brand-soft);
+	box-shadow: var(--shadow-sm), 0 0 20px var(--claude-brand-glow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+@media (prefers-reduced-motion: reduce) {
+	.header .content .hero-skills-list li,
+	.header .content .hero-skills-list li:hover {
+		transition: none;
+		transform: none;
+	}
+}
 .header .content .hero-ctas {
 	display: flex;
 	gap: 16px;
 	justify-content: center;
-	margin-top: 32px;
+	margin-top: 28px;
 }
 .header .content a {
 	display: inline-flex;
