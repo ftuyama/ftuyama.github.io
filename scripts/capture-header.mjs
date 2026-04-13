@@ -5,10 +5,10 @@
  *
  * Usage:
  *   node scripts/capture-header.mjs                    # build + preview; default scale 3
- *   node scripts/capture-header.mjs --scale=4         # up to 4× (heavier)
- *   CAPTURE_DEVICE_SCALE=4 node scripts/capture-header.mjs
+ *   node scripts/capture-header.mjs --scale=4        # 4× uses 2 vertical tiles (avoids black bands)
+ *   CAPTURE_TILE_ROWS=4 CAPTURE_DEVICE_SCALE=4 node scripts/capture-header.mjs
  *   node scripts/capture-header.mjs --no-build
- *   node scripts/capture-header.mjs <url> # remote URL (optional)
+ *   node scripts/capture-header.mjs <url>              # remote URL (optional)
  */
 import { chromium } from 'playwright';
 import { mkdir } from 'node:fs/promises';
@@ -53,6 +53,90 @@ function clampScale(n) {
 }
 
 const DEVICE_SCALE = getDeviceScale(args);
+
+/**
+ * Chromium often returns black regions on very large element screenshots. Splitting into
+ * horizontal strips (full width × slice height) keeps each GPU readback smaller.
+ * @param {number} scale
+ */
+function getTileRowCount(scale) {
+  const env = process.env.CAPTURE_TILE_ROWS;
+  if (env) {
+    const n = parseInt(env, 10);
+    if (Number.isFinite(n)) return Math.min(8, Math.max(1, n));
+  }
+  return scale >= 4 ? 2 : 1;
+}
+
+/**
+ * @param {import('sharp').Sharp} sharpMod
+ * @param {Buffer[]} pngBuffers
+ * @param {string} outPath
+ */
+async function stitchPngsVertical(sharpMod, pngBuffers, outPath) {
+  const metas = await Promise.all(pngBuffers.map((b) => sharpMod(b).metadata()));
+  const width = metas[0]?.width ?? 0;
+  const composite = [];
+  let top = 0;
+  for (let i = 0; i < pngBuffers.length; i++) {
+    const h = metas[i]?.height ?? 0;
+    composite.push({ input: pngBuffers[i], top, left: 0 });
+    top += h;
+  }
+  await sharpMod({
+    create: {
+      width,
+      height: top,
+      channels: 4,
+      background: { r: 0, g: 0, b: 0, alpha: 1 },
+    },
+  })
+    .composite(composite)
+    .png()
+    .toFile(outPath);
+}
+
+/**
+ * @param {import('playwright').Page} page
+ * @param {string} outPath
+ * @param {number} deviceScale
+ */
+async function screenshotHeader(page, outPath, deviceScale) {
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(150);
+
+  const header = page.locator('#header');
+  const box = await header.boundingBox();
+  if (!box) {
+    throw new Error('#header bounding box not found');
+  }
+
+  const rows = getTileRowCount(deviceScale);
+  if (rows <= 1) {
+    await header.screenshot({ path: outPath, type: 'png' });
+    return;
+  }
+
+  const buffers = [];
+  for (let i = 0; i < rows; i++) {
+    const clipY = box.y + (i * box.height) / rows;
+    const clipEnd = i === rows - 1 ? box.y + box.height : box.y + ((i + 1) * box.height) / rows;
+    const clipH = clipEnd - clipY;
+    const buf = await page.screenshot({
+      type: 'png',
+      clip: {
+        x: box.x,
+        y: clipY,
+        width: box.width,
+        height: clipH,
+      },
+    });
+    buffers.push(buf);
+  }
+
+  const sharpMod = (await import('sharp')).default;
+  await stitchPngsVertical(sharpMod, buffers, outPath);
+}
 
 /**
  * @param {string} checkUrl
@@ -168,7 +252,9 @@ try {
     await waitForHttp(`${PREVIEW_ORIGIN}/`);
   }
 
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({
+    args: ['--disable-dev-shm-usage'],
+  });
   const context = await browser.newContext({
     viewport: VIEWPORT,
     deviceScaleFactor: DEVICE_SCALE,
@@ -182,15 +268,16 @@ try {
   await waitForHeaderReady(page);
 
   await mkdir(dirname(outPath), { recursive: true });
-  await page.locator('#header').screenshot({
-    path: outPath,
-    type: 'png',
-  });
+  await screenshotHeader(page, outPath, DEVICE_SCALE);
 
   await browser.close();
 
+  const tileRows = getTileRowCount(DEVICE_SCALE);
   console.log(`Wrote ${outPath}`);
   console.log(`Logical viewport: ${VIEWPORT.width}×${VIEWPORT.height}, scale: ${DEVICE_SCALE}`);
+  if (tileRows > 1) {
+    console.log(`Tiled capture: ${tileRows} strip(s) (workaround for large GPU screenshots)`);
+  }
   console.log(`Source: ${targetUrl}`);
 } finally {
   if (previewChild) {

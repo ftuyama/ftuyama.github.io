@@ -12,6 +12,7 @@
     "globals": "^17.5.0",
     "mocha": "^11.7.5",
     "playwright": "^1.59.1",
+    "sharp": "^0.34.5",
     "typescript": "^6.0.2",
     "typescript-eslint": "^8.58.1",
     "vite": "^8.0.8"
@@ -20,7 +21,8 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "lint": "eslint test src",
-    "capture-header": "node scripts/capture-header.mjs",
+    "screenshot": "node scripts/capture-header.mjs",
+    "optimize": "bash scripts/optimize.sh",
     "test": "mocha",
     "typecheck": "tsc --noEmit"
   },
