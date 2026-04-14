@@ -171,15 +171,19 @@ button, button:focus, a, a:hover, a:focus, input, input:active, input:focus, tex
 	position: relative;
 	width: 100%;
 	background: var(--bg-body);
-	background-image: image-set(
-		url('/public/images/header.webp') type('image/webp')
-	);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	overflow: hidden;
 	background-size: cover;
 	z-index: 1;
+}
+@media (min-width: 767px) {
+  .header .large-header {
+    background-image: image-set(
+      url('/public/images/header.webp') type('image/webp')
+    );
+	}
 }
 .header .content {
 	position: absolute;
@@ -1890,7 +1894,7 @@ a.selected-item:before, .side-menu a:hover:before {
 		background-attachment: scroll;
 	}
 	.header .large-header {
-		background-image: linear-gradient(180deg, rgba(15, 15, 15, 0.95) 0%, rgba(15, 15, 15, 1) 100%);
+		background-image: url('/public/images/header-mobile.webp');
 	}
 
 	.experiences .timeline .timeline-block .content {
