@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirecting...</title>
+  <script>
+    (function () {
+      var sourceBase = "/you-decide";
+      var targetBase = "/silent-dungeon";
+      var path = window.location.pathname;
+      var nextPath;
+
+      if (path === sourceBase) {
+        nextPath = targetBase;
+      } else if (path.indexOf(sourceBase + "/") === 0) {
+        nextPath = targetBase + path.slice(sourceBase.length);
+      } else {
+        nextPath = targetBase + "/";
+      }
+
+      window.location.replace(nextPath + window.location.search + window.location.hash);
+    })();
+  </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=/silent-dungeon/">
+  </noscript>
+</head>
+<body></body>
+</html>
