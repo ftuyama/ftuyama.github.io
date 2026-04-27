@@ -63,6 +63,11 @@ jobs:
     - name: Build
       run: npm run build
 
+    - name: Redirect you-decide
+      run: |
+        mkdir -p dist/you-decide
+        echo '<script>location.replace(location.href.replace("/you-decide","/silent-dungeon"))</script>' > dist/you-decide/index.html
+
     - name: Setup Pages
       uses: actions/configure-pages@v5
 
