@@ -8,12 +8,30 @@
 
     <title>Felipe Tuyama | Senior Software Engineer</title>
 
-    <meta property="og:image" content="https://ftuyama.github.io/public/images/thumb.png" />
-    <meta name="description" content="Felipe Tuyama is a Remote Senior Software Engineer with a degree from ITA (Aeronautics Institute of Technology) in 2017. Currently working as a Ruby software engineer in an international remote team.">
+    <link rel="canonical" href="https://ftuyama.github.io/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+    <meta name="description" content="Felipe Tuyama is a remote Senior Software Engineer at The Reformation with 10+ years of experience in Ruby, Vue.js, TypeScript, and AI engineering. ITA graduate, MTU MSc, based in Brazil.">
     <meta name="keywords" content="Felipe Tuyama,ftuyama,tuyama,felipe-tuyama,software engineer,remote,software,ruby,developer,ita">
     <meta name="author" content="Felipe Tuyama">
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#0f0f0f">
     <meta name="color-scheme" content="dark">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ftuyama.github.io/" />
+    <meta property="og:title" content="Felipe Tuyama | Senior Software Engineer" />
+    <meta property="og:description" content="Felipe Tuyama is a remote Senior Software Engineer at The Reformation with 10+ years of experience in Ruby, Vue.js, TypeScript, and AI engineering. ITA graduate, MTU MSc, based in Brazil." />
+    <meta property="og:image" content="https://ftuyama.github.io/public/images/thumb.png" />
+    <meta property="og:site_name" content="Felipe Tuyama" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Felipe Tuyama | Senior Software Engineer" />
+    <meta name="twitter:description" content="Felipe Tuyama is a remote Senior Software Engineer at The Reformation with 10+ years of experience in Ruby, Vue.js, TypeScript, and AI engineering. ITA graduate, MTU MSc, based in Brazil." />
+    <meta name="twitter:image" content="https://ftuyama.github.io/public/images/thumb.png" />
 
     <!-- Preconnect to Google Fonts for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,24 +57,56 @@
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
-            "@type": "Person",
-            "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "SP",
-            "addressRegion": "BR"
-            },
-            "image": "https://ftuyama.github.io/public/images/me.webp",
-            "jobTitle": "Senior Software Engineer",
-            "name": "Felipe Tuyama",
-            "alumniOf": "Instituto Tecnológico de Aeronáutica",
-            "birthPlace": "Belo Horizonte, BH",
-            "birthDate": "1994-11-10",
-            "gender": "male",
-            "nationality": "Brazilian",
-            "url": "https://ftuyama.github.io",
-            "sameAs" : [
-            "https://www.linkedin.com/in/felipe-tuyama",
-            "https://github.com/ftuyama"
+            "@graph": [
+                {
+                    "@type": "Person",
+                    "@id": "https://ftuyama.github.io/#person",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "SP",
+                        "addressRegion": "BR"
+                    },
+                    "image": "https://ftuyama.github.io/public/images/me.webp",
+                    "jobTitle": "Senior Software Engineer",
+                    "name": "Felipe Tuyama",
+                    "alumniOf": [
+                        "Instituto Tecnológico de Aeronáutica",
+                        "Munster Technological University"
+                    ],
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "The Reformation",
+                        "url": "https://www.thereformation.com/"
+                    },
+                    "knowsAbout": [
+                        "Ruby",
+                        "Vue.js",
+                        "TypeScript",
+                        "AI Engineering",
+                        "Software Architecture"
+                    ],
+                    "birthPlace": "Belo Horizonte, BH",
+                    "birthDate": "1994-11-10",
+                    "gender": "male",
+                    "nationality": "Brazilian",
+                    "url": "https://ftuyama.github.io/",
+                    "sameAs": [
+                        "https://www.linkedin.com/in/felipe-tuyama",
+                        "https://github.com/ftuyama",
+                        "https://stackoverflow.com/users/6275081/felipe-tuyama",
+                        "https://www.youtube.com/channel/UCde9tQl7PSeTdMRMtcv-HTw"
+                    ]
+                },
+                {
+                    "@type": "WebSite",
+                    "@id": "https://ftuyama.github.io/#website",
+                    "url": "https://ftuyama.github.io/",
+                    "name": "Felipe Tuyama",
+                    "description": "Personal portfolio of Felipe Tuyama, remote Senior Software Engineer specializing in Ruby, Vue.js, TypeScript, and AI engineering.",
+                    "author": {
+                        "@id": "https://ftuyama.github.io/#person"
+                    }
+                }
             ]
         }
     </script>
