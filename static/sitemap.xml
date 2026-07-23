@@ -10,4 +10,22 @@
       <image:title>Felipe Tuyama - Senior Software Engineer</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://ftuyama.github.io/git-light/</loc>
+    <lastmod>2026-07-20T20:31:54-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ftuyama.github.io/silent-dungeon/</loc>
+    <lastmod>2026-07-22T09:28:47-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ftuyama.github.io/cracking-the-tech-interview/</loc>
+    <lastmod>2024-12-28T18:31:39-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

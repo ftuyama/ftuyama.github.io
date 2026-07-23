@@ -10,6 +10,11 @@ Remote senior software engineer based in Brazil with 10+ years of experience. Cu
 - [Experience](https://ftuyama.github.io/#experiences): Work history and timeline
 - [Skills](https://ftuyama.github.io/#skills): Technical skills and languages
 
+## Projects
+- [Git Light](https://ftuyama.github.io/git-light/): Free open-source desktop Git client with commit graph
+- [Silent Dungeon](https://ftuyama.github.io/silent-dungeon/): Interactive fiction game — A Masmorra do Silêncio
+- [Cracking the Tech Interview](https://ftuyama.github.io/cracking-the-tech-interview/): Live library for technical interview preparation
+
 ## Structured Data
 - [Profile cache](https://ftuyama.github.io/public/cache/ftuyama.json): GitHub profile metadata
 - [Repositories cache](https://ftuyama.github.io/public/cache/repos.json): Public GitHub repositories
