@@ -1,8 +1,3 @@
-interface Certificate {
-  name: string;
-  path?: string;
-}
-
 interface GitHubUser {
   public_repos: number;
 }
@@ -61,31 +56,12 @@ export function initDeferredApp(): void {
   initScrollAnimations();
   initFunFacts();
   initSkills();
-  initPortfolioEnhancements();
-}
-
-function initPortfolioEnhancements(): void {
-  const portfolioSection = document.getElementById('portfolio');
-  if (!portfolioSection) return;
-
-  let started = false;
-  observeElement(
-    portfolioSection,
-    () => {
-      if (started) return;
-      started = true;
-      initCertificates();
-      initPortfolioFilter();
-      initPopup();
-    },
-    0,
-  );
 }
 
 function initLoadingScreen(): void {
   setTimeout(() => {
     document.querySelector('.loading')?.classList.add('loaded');
-  }, 600);
+  }, 180);
 }
 
 function initDynamicText(): void {
@@ -159,83 +135,6 @@ function initMenu(): void {
       sideMenu.classList.toggle('active-side-menu');
     });
   });
-}
-
-// Replaces Owl Carousel with CSS scroll-snap carousel
-async function initCertificates(): Promise<void> {
-  try {
-    // Prefer static cache for reliability; fallback to GitHub API if unavailable.
-    const certsCandidates = [
-      '/public/cache/certificates.json',
-      'https://api.github.com/repos/ftuyama/ftuyama.github.io/contents/static/public/certificates',
-    ];
-
-    let certificates: Certificate[] | null = null;
-    for (const url of certsCandidates) {
-      try {
-        const res = await fetch(url);
-        if (!res.ok) continue;
-        certificates = (await res.json()) as Certificate[];
-        break;
-      } catch {
-        // Ignore and try next source.
-      }
-    }
-    if (!certificates?.length) return;
-
-    const container = document.getElementById('certificates');
-    if (!container) return;
-
-    const track = document.createElement('div');
-    track.className = 'carousel-track';
-
-    for (const cert of certificates) {
-      const certificateUrl = getCertificateUrl(cert);
-      const slide = document.createElement('div');
-      slide.className = 'carousel-slide';
-      slide.innerHTML = `
-        <embed src="${certificateUrl}#toolbar=0&navpanes=0&scrollbar=0" width="480" height="360" loading="lazy">
-        <div class="certificate-link-wrapper">
-          <a target="_blank" class="certificate-link" href="${certificateUrl}">
-            ${cert.name.replace('.pdf', '')}
-          </a>
-        </div>
-      `;
-      track.appendChild(slide);
-    }
-
-    container.appendChild(track);
-
-    let scrollPos = 0;
-    setInterval(() => {
-      const slideWidth =
-        track.querySelector('.carousel-slide')?.clientWidth ?? 500;
-      scrollPos += slideWidth + 10;
-      if (scrollPos >= track.scrollWidth - track.clientWidth) {
-        scrollPos = 0;
-        track.scrollTo({ left: 0 });
-        return;
-      }
-      track.scrollTo({ left: scrollPos, behavior: 'smooth' });
-    }, 2000);
-  } catch {
-    /* certificates unavailable */
-  }
-}
-
-function getCertificateUrl(cert: Certificate): string {
-  const rawPath = cert.path?.trim();
-  if (rawPath) {
-    const normalized = rawPath.startsWith('/') ? rawPath.slice(1) : rawPath;
-    const encodedPath = normalized
-      .split('/')
-      .map((segment) => encodeURIComponent(segment))
-      .join('/');
-    return `/${encodedPath}`;
-  }
-
-  const fileName = encodeURIComponent(cert.name);
-  return `/public/certificates/${fileName}`;
 }
 
 function initSmoothScroll(): void {
@@ -424,81 +323,6 @@ function initSkills(): void {
     },
     -150,
   );
-}
-
-// Replaces MixItUp
-function initPortfolioFilter(): void {
-  const container = document.getElementById('Container');
-  if (!container) return;
-
-  const items = container.querySelectorAll<HTMLElement>('.mix');
-  const buttons = document.querySelectorAll<HTMLElement>('.controls .filter');
-
-  items.forEach((item) => {
-    item.style.display = 'inline-block';
-  });
-
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const filter = button.dataset.filter ?? 'all';
-
-      buttons.forEach((b) => b.classList.remove('active'));
-      button.classList.add('active');
-
-      items.forEach((item) => {
-        if (
-          filter === 'all' ||
-          item.classList.contains(filter.replace('.', ''))
-        ) {
-          item.style.display = 'inline-block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    });
-  });
-}
-
-// Replaces Magnific Popup with native <dialog>
-function initPopup(): void {
-  const dialog = document.createElement('dialog');
-  dialog.className = 'popup-dialog';
-
-  const inner = document.createElement('div');
-  inner.className = 'popup-dialog-inner';
-
-  const closeBtn = document.createElement('button');
-  closeBtn.className = 'popup-close';
-  closeBtn.textContent = '\u00d7';
-  closeBtn.type = 'button';
-  closeBtn.addEventListener('click', () => dialog.close());
-
-  const content = document.createElement('div');
-  content.className = 'white-popup';
-
-  inner.appendChild(closeBtn);
-  inner.appendChild(content);
-  dialog.appendChild(inner);
-
-  dialog.addEventListener('click', (e) => {
-    if (e.target === dialog) dialog.close();
-  });
-
-  document.body.appendChild(dialog);
-
-  document.querySelectorAll<HTMLAnchorElement>('.open-popup-link').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const targetId = link.getAttribute('href')?.slice(1);
-      if (!targetId) return;
-      const source = document.getElementById(targetId);
-      if (!source) return;
-
-      content.innerHTML = source.innerHTML;
-      dialog.showModal();
-    });
-  });
 }
 
 // --- Utilities ---

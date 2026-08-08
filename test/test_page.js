@@ -69,4 +69,39 @@ describe('Page', () => {
       });
     });
   });
+
+  describe('#portfolio', () => {
+    const projects = [
+      'git-light',
+      'arcania',
+      'silent-dungeon',
+      'google-reauth-extension',
+      'scroll-closing-your-eyes',
+      'flaky-rspec-reporter',
+    ];
+
+    it('should show the selected GitHub projects', () => {
+      assert.equal(undefined, $('#portfolio').attr('hidden'));
+      assert.equal(projects.length, $('.project-card').length);
+
+      projects.forEach((project) => {
+        const card = $('.project-card').filter((_i, el) =>
+          $(el).find('h3').text() === project,
+        );
+        assert.equal(1, card.length, `Missing ${project} project card`);
+        assert.equal(
+          `https://github.com/ftuyama/${project}`,
+          card.find('a').first().attr('href'),
+        );
+      });
+    });
+
+    it('should only show demos for projects with a homepage', () => {
+      assert.equal(4, $('.project-links a').filter((_i, el) => $(el).text().includes('Demo')).length);
+    });
+
+    it('should keep certificates hidden', () => {
+      assert.equal('hidden', $('.certificates').attr('hidden'));
+    });
+  });
 });
