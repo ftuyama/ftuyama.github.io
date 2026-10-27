@@ -1,35 +1,38 @@
 # ftuyama.github.io
 
-![Build status](https://github.com/ftuyama/ftuyama.github.io/actions/workflows/main.yml/badge.svg)[![Code Climate](https://codeclimate.com/github/ftuyama/ftuyama.github.io/badges/gpa.svg)](https://codeclimate.com/github/ftuyama/ftuyama.github.io)
+![Build status](https://github.com/ftuyama/ftuyama.github.io/actions/workflows/main.yml/badge.svg)
 
-This is my personal portfolio website, using vanilla HTML/JS/CSS.
+My personal portfolio website and home on the web, built with vanilla HTML/JS/CSS.
 
-## Run the project
+🔗 **[Live site](https://ftuyama.github.io)**
 
-Install dependencies:
+## Tech stack
 
-```bash
-npm install
-```
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://skillicons.dev/icons?i=html" alt="HTML" /></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://skillicons.dev/icons?i=css" alt="CSS" /></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://skillicons.dev/icons?i=js" alt="JavaScript" /></a>
+<a href="https://www.typescriptlang.org/"><img src="https://skillicons.dev/icons?i=ts" alt="TypeScript" /></a>
+<a href="https://getbootstrap.com/"><img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap" /></a>
+<a href="https://vite.dev/"><img src="https://skillicons.dev/icons?i=vite" alt="Vite" /></a>
+<a href="https://github.com/features/actions"><img src="https://skillicons.dev/icons?i=githubactions" alt="GitHub Actions" /></a>
 
-Run the dev server (Vite):
+- **[Vite](https://vite.dev/)** for the dev server and builds
+- **[GSAP](https://gsap.com/)** and **[Animate.css](https://animate.style/)** for animations
+- **[GitHub Actions](https://github.com/features/actions)** for CI
 
-```bash
-npm run dev
-```
+## About me
 
-Then the app should be available at <http://localhost:5173>
+I'm **Felipe Tuyama**, a Senior Software Engineer with 10+ years of experience in Ruby, Vue.js, TypeScript, and AI engineering. I graduated from ITA, hold an MSc from MTU, and work remotely at [The Reformation](https://www.thereformation.com/) from Brazil.
 
-## Lint
+- 🌐 Website: [ftuyama.github.io](https://ftuyama.github.io)
+- 💼 GitHub: [@ftuyama](https://github.com/ftuyama)
 
-```bash
-npm run lint
-```
+## About this repository
 
-## Running tests
+This repository powers my portfolio, where I showcase my projects and experience. The site is a static build deployed through **GitHub Pages**.
 
-Validate URLs and image formats using:
+Want to run or contribute to it locally? Check out [DEVELOPER.md](DEVELOPER.md).
 
-```bash
-npm test
-```
+## Licence
+
+Released under the [GNU AGPL-3.0 Licence](LICENCE).
