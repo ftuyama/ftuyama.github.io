@@ -2,6 +2,9 @@
   "name": "ftuyama.github.io",
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:ftuyama/ftuyama.github.io.git"

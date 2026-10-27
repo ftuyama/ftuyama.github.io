@@ -27,8 +27,15 @@ jobs:
       uses: actions/setup-node@v6
       with:
         node-version: '24'
+        cache: 'npm'
 
-    - run: npm install
+    - run: npm ci
+
+    - name: Cache Playwright Chromium
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/ms-playwright
+        key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
     - name: Install Playwright Chromium
       run: npx playwright install chromium --with-deps
@@ -57,8 +64,9 @@ jobs:
       uses: actions/setup-node@v6
       with:
         node-version: '24'
+        cache: 'npm'
 
-    - run: npm install
+    - run: npm ci
 
     - name: Build
       run: npm run build
