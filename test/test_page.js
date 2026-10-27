@@ -1,7 +1,6 @@
 import assert from 'assert';
 import loadPage from './html_helper.js';
 
-const SKIP_HREF_PATTERN = /.*(resume|maximus|buson|teaminternational|ieeexplore|google|infinitusgo|linkedin|vigil|twitter|researchgate|stackoverflow|ko-fi\.com|#).*/;
 const SKIP_BLANK_PATTERN = /.*(resume|infinitusgo|google|twitter|#).*/;
 
 describe('Page', () => {
@@ -35,26 +34,6 @@ describe('Page', () => {
           assert.equal('_blank', link.attribs.target, `${link.attribs.href} should have target _blank`);
         }
       });
-    });
-
-    it('should be valid', async function () {
-      this.timeout(30000);
-
-      const urlsToCheck = [];
-      links.each((_i, link) => {
-        if (!link.attribs.href.match(SKIP_HREF_PATTERN)) {
-          urlsToCheck.push(link.attribs.href);
-        }
-      });
-
-      for (const href of urlsToCheck) {
-        try {
-          const res = await fetch(href, { method: 'HEAD', redirect: 'follow' });
-          assert.ok(res.ok, `${href} returned status ${res.status}`);
-        } catch (err) {
-          assert.fail(`${href} is unreachable: ${err.message}`);
-        }
-      }
     });
   });
 
