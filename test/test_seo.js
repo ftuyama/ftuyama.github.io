@@ -61,14 +61,53 @@ describe('SEO', () => {
       sitemap = await readFile('static/sitemap.xml', 'utf8');
     });
 
-    it('should be valid XML with a urlset', () => {
+    it('should be valid XML with a sitemapindex', () => {
       assert.match(sitemap, /<\?xml\s/);
-      assert.match(sitemap, /<urlset[\s>]/);
-      assert.match(sitemap, /<\/urlset>/);
+      assert.match(sitemap, /<sitemapindex[\s>]/);
+      assert.match(sitemap, /<\/sitemapindex>/);
+    });
+
+    it('should reference the pages sitemap', () => {
+      assert.match(sitemap, /<loc>https:\/\/ftuyama\.github\.io\/sitemap-pages\.xml<\/loc>/);
+    });
+
+    it('should reference each project sitemap', () => {
+      for (const project of ['git-light', 'silent-dungeon', 'google-reauth-extension']) {
+        assert.match(
+          sitemap,
+          new RegExp(`<loc>https://ftuyama\\.github\\.io/${project}/sitemap\\.xml</loc>`),
+          `expected a sitemap entry for ${project}`,
+        );
+      }
+    });
+  });
+
+  describe('sitemap-pages.xml', () => {
+    let pages;
+
+    before(async () => {
+      pages = await readFile('static/sitemap-pages.xml', 'utf8');
+    });
+
+    it('should be valid XML with a urlset', () => {
+      assert.match(pages, /<\?xml\s/);
+      assert.match(pages, /<urlset[\s>]/);
+      assert.match(pages, /<\/urlset>/);
     });
 
     it('should list the canonical homepage URL', () => {
-      assert.match(sitemap, /<loc>https:\/\/ftuyama\.github\.io\/<\/loc>/);
+      assert.match(pages, /<loc>https:\/\/ftuyama\.github\.io\/<\/loc>/);
+    });
+
+    it('should use absolute https URLs only', () => {
+      const locs = [...pages.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+      assert.ok(locs.length > 0, 'expected at least one <loc>');
+      for (const url of locs) {
+        assert.ok(
+          url.startsWith('https://ftuyama.github.io/'),
+          `${url} should be an absolute https URL on ftuyama.github.io`,
+        );
+      }
     });
   });
 

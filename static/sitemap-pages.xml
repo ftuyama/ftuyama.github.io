@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://ftuyama.github.io/</loc>
+    <lastmod>2026-07-20T20:00:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ftuyama.github.io/public/images/thumb.png</image:loc>
+      <image:title>Felipe Tuyama - Senior Software Engineer</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ftuyama.github.io/google-reauth-extension/</loc>
+    <lastmod>2026-09-09T14:48:00Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ftuyama.github.io/estoico/</loc>
+    <lastmod>2026-08-20T03:02:35Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ftuyama.github.io/git-light/</loc>
+    <lastmod>2026-11-12T20:15:50Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ftuyama.github.io/silent-dungeon/</loc>
+    <lastmod>2026-07-22T09:28:47-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ftuyama.github.io/cracking-the-tech-interview/</loc>
+    <lastmod>2024-12-28T18:31:39-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

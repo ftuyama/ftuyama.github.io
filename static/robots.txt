@@ -8,3 +8,7 @@ Disallow: /public/certificates/
 # llms.txt: https://ftuyama.github.io/llms.txt
 
 Sitemap: https://ftuyama.github.io/sitemap.xml
+Sitemap: https://ftuyama.github.io/sitemap-pages.xml
+Sitemap: https://ftuyama.github.io/git-light/sitemap.xml
+Sitemap: https://ftuyama.github.io/silent-dungeon/sitemap.xml
+Sitemap: https://ftuyama.github.io/google-reauth-extension/sitemap.xml
